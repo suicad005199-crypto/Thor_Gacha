@@ -96,6 +96,17 @@ let musicEnabled = true;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function updateAppViewportHeight() {
+  const viewportHeight = window.visualViewport?.height
+    || window.innerHeight
+    || document.documentElement.clientHeight;
+  if (Number.isFinite(viewportHeight) && viewportHeight > 0) {
+    document.documentElement.style.setProperty("--app-height", `${Math.round(viewportHeight)}px`);
+  }
+}
+
+updateAppViewportHeight();
+
 const thorSplitWeightTable = {
   6: [.08, .1, .12, .14, .18, .38],
   7: [.07, .08, .1, .12, .14, .19, .3],
@@ -5535,12 +5546,20 @@ function resolveRunTotals() {
       });
     });
 
-    window.addEventListener("resize", () => {
+    function handleViewportResize() {
+      updateAppViewportHeight();
       resizeLightningCanvas();
       resizeClawCanvas();
       resizeBubbleCanvas();
       getSlots().forEach((slot) => setSlotDigit(slot, slot.dataset.value || "0"));
+    }
+
+    window.addEventListener("resize", handleViewportResize);
+    window.addEventListener("orientationchange", () => {
+      window.setTimeout(handleViewportResize, 160);
     });
+    window.visualViewport?.addEventListener("resize", handleViewportResize);
+    window.visualViewport?.addEventListener("scroll", updateAppViewportHeight);
 
     void loadThorMobHitEffect();
     void loadThorIntroFxData();

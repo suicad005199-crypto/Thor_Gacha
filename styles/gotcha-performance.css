@@ -10,6 +10,13 @@
       --cyan: #47d5d1;
       --ink: #07090d;
       --white: #f6f0d6;
+      --app-height: 100svh;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --page-padding-block: clamp(8px, 1.2vw, 14px);
+      --page-padding-inline: clamp(8px, 1.2vw, 14px);
     }
 
     * {
@@ -23,19 +30,30 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: var(--app-height);
       display: grid;
       place-items: center;
       gap: 10px;
-      padding: clamp(8px, 1.2vw, 14px);
+      padding:
+        calc(var(--page-padding-block) + var(--safe-top))
+        calc(var(--page-padding-inline) + var(--safe-right))
+        calc(var(--page-padding-block) + var(--safe-bottom))
+        calc(var(--page-padding-inline) + var(--safe-left));
+      overflow-x: hidden;
       background: var(--bg);
       color: var(--white);
       font-family: "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     .machine {
       width: min(1560px, 100%);
       display: grid;
       gap: 10px;
+      min-height: 0;
     }
 
     .stage {
@@ -2435,7 +2453,9 @@
 
     @media (max-width: 680px) {
       body {
-        padding: 10px;
+        --page-padding-block: 10px;
+        --page-padding-inline: 10px;
+        place-items: start center;
       }
 
       .stage {
@@ -2487,5 +2507,108 @@
 
       input {
         width: 100%;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px) {
+      body {
+        --page-padding-block: 6px;
+        --page-padding-inline: 8px;
+        overflow: hidden;
+      }
+
+      .machine {
+        width: 100%;
+        height: calc(var(--app-height) - var(--safe-top) - var(--safe-bottom) - (var(--page-padding-block) * 2));
+        grid-template-columns: minmax(0, 1fr) minmax(216px, 29vw);
+        grid-template-rows: minmax(0, 1fr);
+        align-items: center;
+        gap: 8px;
+      }
+
+      .stage {
+        width: 100%;
+        min-height: 0;
+        max-height: 100%;
+        align-self: center;
+      }
+
+      .toolbar {
+        align-self: stretch;
+        min-height: 0;
+        justify-content: flex-start;
+        gap: 6px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        --toolbar-gap: 6px;
+      }
+
+      .toolbar-row,
+      .thor-control-grid,
+      .thor-bonus-control-grid {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--toolbar-gap);
+      }
+
+      .thor-control-grid::before,
+      .thor-bonus-control-grid::before {
+        content: none;
+      }
+
+      .toolbar label,
+      .toolbar button {
+        flex: 1 1 calc(50% - var(--toolbar-gap));
+        width: auto;
+        min-width: 0;
+      }
+
+      .toolbar label {
+        padding: 4px 6px;
+        gap: 5px;
+      }
+
+      .toolbar span {
+        font-size: 12px;
+      }
+
+      input,
+      button {
+        min-height: 34px;
+      }
+
+      input,
+      .compact-control input {
+        width: 100%;
+        min-width: 0;
+        font-size: 16px;
+      }
+
+      .primary,
+      .music-toggle,
+      .preset,
+      .character-button,
+      .thor-control-grid button,
+      .thor-bonus-button {
+        width: auto;
+        padding: 0 5px;
+        font-size: 12px;
+      }
+
+      .thor-log-box {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 5px 6px;
+      }
+
+      .thor-log-box .log-label {
+        font-size: 11px;
+      }
+
+      .thor-log-box .log-value {
+        font-size: 13px;
       }
     }
