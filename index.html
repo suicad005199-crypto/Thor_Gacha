@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>捕魚機中王表演流程 - 純數字滾動版</title>
+  <link rel="stylesheet" href="styles/gotcha-performance.css?v=20260623-thor-spine-loop-109">
+</head>
+<body>
+  <main class="machine">
+    <section class="stage" aria-label="中王開獎表演">
+      <div class="scene" aria-hidden="true"></div>
+      <div class="hades-darkness" aria-hidden="true"></div>
+      <div class="shockwave"></div>
+      <canvas class="lightning-canvas" id="lightningCanvas" aria-hidden="true"></canvas>
+      <canvas class="claw-canvas" id="clawCanvas" aria-hidden="true"></canvas>
+      <canvas class="bubble-canvas" id="bubbleCanvas" aria-hidden="true"></canvas>
+      <div class="ball-layer" id="ballLayer" aria-hidden="true"></div>
+      <div class="score-gather-layer" id="scoreGatherLayer" aria-hidden="true"></div>
+      <div class="boss" aria-label="方塊角色">
+        <img class="boss-image" src="Fish_30101-Fish_30101_Idle_14.png" alt="">
+      </div>
+      <img class="result-board" src="0624.png" alt="">
+      <div class="prize-row" id="prizeRow" aria-label="下方獎金數字"></div>
+      <div class="flash"></div>
+      <div class="blackout"></div>
+    </section>
+
+    <div class="toolbar">
+      <div class="toolbar-row main-control-grid">
+        <label>
+          <span>獎金</span>
+          <input id="prizeInput" value="12800" inputmode="numeric" maxlength="8" aria-label="獎金數字">
+        </label>
+        <label class="compact-control bet-control">
+          <span>BET</span>
+          <input id="betInput" value="" inputmode="decimal" maxlength="10" aria-label="BET">
+        </label>
+        <label class="compact-control odd-control">
+          <span>實際ODD</span>
+          <input id="oddInput" value="" inputmode="decimal" maxlength="10" aria-label="實際獲得 ODD">
+        </label>
+        <button class="primary" id="playButton" type="button">開始</button>
+        <button class="music-toggle is-on" id="musicToggleButton" type="button" aria-pressed="true">音樂開</button>
+        <button class="preset" type="button" data-value="888">3位</button>
+        <button class="preset" type="button" data-value="12800">5位</button>
+        <button class="preset" type="button" data-value="9753100">7位</button>
+        <button class="character-button" type="button" data-character-key="boss01" aria-pressed="false">法老王</button>
+        <button class="character-button" type="button" data-character-key="fish40101" aria-pressed="false">黑帝斯</button>
+        <button class="character-button" type="button" data-character-key="fish10101" aria-pressed="false">美人魚</button>
+      </div>
+      <div class="toolbar-row thor-control-grid">
+        <button class="character-button" type="button" data-character-key="god10101" aria-pressed="false">雷神</button>
+        <button class="character-button old-thor-button" type="button" data-character-key="oldGod10101" aria-pressed="false">old 雷神</button>
+        <button class="thor-split-button" type="button" data-thor-split-count="6">6次開分</button>
+        <button class="thor-split-button" type="button" data-thor-split-count="7">7次開分</button>
+        <button class="thor-split-button" type="button" data-thor-split-count="8">8次開分</button>
+        <button class="thor-split-button" type="button" data-thor-split-count="9">9次開分</button>
+      </div>
+      <div class="toolbar-row thor-bonus-control-grid">
+        <button class="thor-bonus-button" type="button" data-thor-bonus-total-strikes="9">加碼版雷神</button>
+        <button class="thor-bonus-button" type="button" data-thor-bonus-total-strikes="10">10次雷擊</button>
+        <button class="thor-bonus-button" type="button" data-thor-bonus-total-strikes="11">11次雷擊</button>
+      </div>
+      <div class="thor-log-box is-inactive" id="thorLogBox" aria-live="polite">
+        <div class="log-item">
+          <span class="log-label">ODD區間</span>
+          <span class="log-value" data-log-field="oddRange">-</span>
+        </div>
+        <div class="log-item">
+          <span class="log-label">加碼開分</span>
+          <span class="log-value" data-log-field="bonusState">-</span>
+        </div>
+        <div class="log-item">
+          <span class="log-label">加碼次數</span>
+          <span class="log-value" data-log-field="bonusCount">-</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/vendor/spine-runtimes/3.8/spine-webgl.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="assets/effects/20101/Fish_20101_MobHit_FX.data.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="assets/fishes/20101/Fish_20101.data.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="assets/fishes/20101/Fish_20101.textures.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="Fish_20201_GachaIn_FX.data.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="Fish_20201_Spawn_FX.data.js?v=20260623-thor-spine-loop-106"></script>
+  <script src="scripts/gotcha-config.js?v=20260623-thor-spine-loop-109"></script>
+  <script src="scripts/gotcha-performance.js?v=20260623-thor-spine-loop-109"></script>
+</body>
+</html>
