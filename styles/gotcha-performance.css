@@ -2514,6 +2514,7 @@
       body {
         --page-padding-block: 0px;
         --page-padding-inline: 0px;
+        padding: 0;
         place-items: start center;
         overflow-y: auto;
       }
@@ -2528,8 +2529,8 @@
 
       .stage {
         width: 100%;
-        height: calc(var(--app-height) - var(--safe-top) - var(--safe-bottom));
-        aspect-ratio: auto;
+        height: auto;
+        aspect-ratio: 16 / 9;
         min-height: 0;
         align-self: start;
         border-width: 2px;
