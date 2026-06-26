@@ -4403,8 +4403,8 @@ function resolveRunTotals() {
           thorSplitCount: 9,
           bonusBoostTargetStrike: targetStrikeNumber,
           bonusBoostAmount: boostAmount,
-          delay: index === 0 ? 120 : 260,
-          hold: 880,
+          delay: 120,
+          hold: 500,
           localFlash: true,
           noJitter: true,
           strong: true,
@@ -4452,7 +4452,7 @@ function resolveRunTotals() {
       });
 
       if (bonusBoostStrikes.length) {
-        plannedStrikes.push({ pause: 500, playThorGroundSound: true });
+        plannedStrikes.push({ pause: 200, playThorGroundSound: true });
         plannedStrikes.push(...bonusBoostStrikes);
       }
 
