@@ -268,7 +268,7 @@ window.GotchaPerformanceConfig = {
       scoreLoopAnimation: "Fish_20101_Gacha_Loop",
       scoreLoopDurationMs: 5000,
       scoreLoopFadeOutMs: 1600,
-      scoreLoopMaxStrike: 0,
+      scoreLoopMaxStrike: 6,
       scoreLoopOpacity: .94,
       scoreLoopScale: 3.1,
       scoreLoopWidth: 335,
