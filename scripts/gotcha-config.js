@@ -46,7 +46,7 @@ window.GotchaPerformanceConfig = {
         dropDuration: 300,
         landHold: 360,
         playFx: true,
-        introFx: "thorIntroEntryFx",
+        introFx: "thorIntroFx",
         introMobHitFx: {
           enabled: false,
           tone: "darkBlue",
