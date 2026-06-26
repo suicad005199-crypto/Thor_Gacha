@@ -2512,35 +2512,35 @@
 
     @media (orientation: landscape) and (max-height: 520px) {
       body {
-        --page-padding-block: 6px;
-        --page-padding-inline: 8px;
-        overflow: hidden;
+        --page-padding-block: 0px;
+        --page-padding-inline: 0px;
+        place-items: start center;
+        overflow-y: auto;
       }
 
       .machine {
         width: 100%;
-        height: calc(var(--app-height) - var(--safe-top) - var(--safe-bottom) - (var(--page-padding-block) * 2));
-        grid-template-columns: minmax(0, 1fr) minmax(216px, 29vw);
-        grid-template-rows: minmax(0, 1fr);
-        align-items: center;
-        gap: 8px;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        align-items: start;
+        gap: 0;
       }
 
       .stage {
         width: 100%;
+        height: calc(var(--app-height) - var(--safe-top) - var(--safe-bottom));
+        aspect-ratio: auto;
         min-height: 0;
-        max-height: 100%;
-        align-self: center;
+        align-self: start;
+        border-width: 2px;
       }
 
       .toolbar {
-        align-self: stretch;
-        min-height: 0;
+        width: 100%;
+        align-self: start;
+        padding: 8px max(8px, var(--safe-right)) calc(8px + var(--safe-bottom)) max(8px, var(--safe-left));
         justify-content: flex-start;
         gap: 6px;
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
         --toolbar-gap: 6px;
       }
 
