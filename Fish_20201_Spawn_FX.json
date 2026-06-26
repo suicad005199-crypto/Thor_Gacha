@@ -1,0 +1,787 @@
+{
+"skeleton": {
+	"hash": "J0zZi1FPrc12iCHQ6mFkwfpyu94",
+	"spine": "3.8.99",
+	"x": -897.72,
+	"y": -256.41,
+	"width": 1792.8,
+	"height": 1435.26,
+	"images": "./images/",
+	"audio": "C:/Users/jed.chen/Spine/backup"
+},
+"bones": [
+	{ "name": "root", "rotation": 0.09, "x": -1.32 },
+	{ "name": "Lightning2_scale", "parent": "root" },
+	{ "name": "Lightning2", "parent": "Lightning2_scale", "x": 0.88, "y": 559.57 },
+	{ "name": "Circle2", "parent": "root", "x": -2.33, "scaleX": 2, "scaleY": 2 },
+	{ "name": "lightening2", "parent": "root", "rotation": 40, "x": -0.19, "y": 0.23 },
+	{
+		"name": "lightening3",
+		"parent": "root",
+		"rotation": -54.68,
+		"x": -0.19,
+		"y": 0.23,
+		"scaleX": 0.5,
+		"scaleY": 0.8
+	},
+	{ "name": "Thor_light", "parent": "root", "x": 1.27, "y": 178.68 },
+	{ "name": "Circle3", "parent": "root", "x": -2.33, "scaleX": 2, "scaleY": 2 },
+	{ "name": "cy_circle", "parent": "root", "x": 38.41, "y": -90.11, "scaleX": 7, "scaleY": 5 },
+	{ "name": "lightening10", "parent": "root", "rotation": -0.09, "x": 460.97, "y": -438.74 },
+	{ "name": "lightening11", "parent": "root", "rotation": -0.09, "x": 216.99, "y": -438.36 },
+	{ "name": "lightening4", "parent": "root", "rotation": 40, "x": -0.19, "y": 0.23 },
+	{
+		"name": "lightening5",
+		"parent": "root",
+		"rotation": -54.68,
+		"x": -0.19,
+		"y": 0.23,
+		"scaleX": 0.5,
+		"scaleY": 0.8
+	},
+	{ "name": "ring_lightening", "parent": "root" },
+	{ "name": "lightening6", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening7", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening8", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening9", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening12", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening13", "parent": "ring_lightening", "transform": "noScale" },
+	{ "name": "lightening14", "parent": "ring_lightening", "transform": "noScale" }
+],
+"slots": [
+	{ "name": "circle3", "bone": "Circle3", "color": "0070ffff", "blend": "additive" },
+	{ "name": "Lightning2", "bone": "Lightning2", "attachment": "RingLightning_16" },
+	{ "name": "lightening11", "bone": "lightening11" },
+	{ "name": "lightening10", "bone": "lightening10" },
+	{ "name": "Thor_light2", "bone": "Thor_light", "color": "05bcffce", "attachment": "ef_glow_frank007", "blend": "additive" },
+	{ "name": "Thor_light", "bone": "Thor_light", "color": "def7ffff", "attachment": "Comp 1_04" },
+	{ "name": "lightening2", "bone": "lightening2", "attachment": "lightening2/LightningB_00" },
+	{ "name": "lightening4", "bone": "lightening4", "attachment": "lightening2/LightningB_00" },
+	{ "name": "lightening3", "bone": "lightening3", "color": "5ac8ffff", "attachment": "lightening2/LightningB_00" },
+	{ "name": "lightening5", "bone": "lightening5", "color": "5ac8ffff", "attachment": "lightening2/LightningB_00" },
+	{ "name": "lightening9", "bone": "lightening9", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "lightening12", "bone": "lightening12", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "lightening7", "bone": "lightening7", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "circle2", "bone": "Circle2", "color": "def7ffff", "attachment": "star_00" },
+	{ "name": "light", "bone": "cy_circle", "color": "82bfffff", "attachment": "cy_circle" },
+	{ "name": "lightening6", "bone": "lightening6", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "lightening13", "bone": "lightening13", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "lightening14", "bone": "lightening14", "attachment": "lightening4/FX_lightning_11" },
+	{ "name": "lightening8", "bone": "lightening8", "attachment": "lightening4/FX_lightning_11" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Lightning2": {
+				"RingLightning_06": { "x": -0.5, "y": -317.47, "width": 128, "height": 512 },
+				"RingLightning_08": { "x": -0.5, "y": -317.57, "width": 128, "height": 512 },
+				"RingLightning_10": { "x": -0.5, "y": -317.57, "width": 128, "height": 512 },
+				"RingLightning_12": { "x": -0.5, "y": -317.57, "width": 128, "height": 512 },
+				"RingLightning_14": { "x": -0.5, "y": -317.57, "width": 128, "height": 512 },
+				"RingLightning_16": { "x": -0.5, "y": -317.57, "width": 128, "height": 512 }
+			},
+			"Thor_light": {
+				"Comp 1_04": { "x": -0.28, "scaleX": -4, "scaleY": 4, "width": 64, "height": 64 }
+			},
+			"Thor_light2": {
+				"ef_glow_frank007": { "scaleX": 5, "scaleY": 7, "width": 64, "height": 64 }
+			},
+			"circle2": {
+				"star_00": { "width": 256, "height": 256 }
+			},
+			"circle3": {
+				"ef_glow_frank007": { "x": 1.17, "width": 64, "height": 64 }
+			},
+			"light": {
+				"cy_circle": { "x": -5.37, "y": 125.71, "rotation": -0.09, "width": 256, "height": 256 }
+			},
+			"lightening2": {
+				"lightening2/LightningB_00": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_01": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_02": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_03": { "y": 100, "width": 256, "height": 256 }
+			},
+			"lightening3": {
+				"lightening2/LightningB_00": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_01": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_02": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_03": { "y": 100, "width": 256, "height": 256 }
+			},
+			"lightening4": {
+				"lightening2/LightningB_00": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_01": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_02": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_03": { "y": 100, "width": 256, "height": 256 }
+			},
+			"lightening5": {
+				"lightening2/LightningB_00": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_01": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_02": { "y": 100, "width": 256, "height": 256 },
+				"lightening2/LightningB_03": { "y": 100, "width": 256, "height": 256 }
+			},
+			"lightening6": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening7": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening8": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening9": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening10": {
+				"lightening3/lightning_13": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_14": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_15": { "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_16": { "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_17": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 }
+			},
+			"lightening11": {
+				"lightening3/lightning_13": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_14": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_15": { "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_16": { "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 },
+				"lightening3/lightningd_17": { "x": 0.49, "y": 138.05, "rotation": 0.09, "width": 180, "height": 180 }
+			},
+			"lightening12": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening13": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			},
+			"lightening14": {
+				"lightening4/FX_lightning_00": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_01": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_02": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_03": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_04": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_05": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_06": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_07": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_08": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_09": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_10": { "y": 86, "width": 200, "height": 200 },
+				"lightening4/FX_lightning_11": { "y": 86, "width": 200, "height": 200 }
+			}
+		}
+	}
+],
+"animations": {
+	"Fish_20201_Spawn_FX": {
+		"slots": {
+			"Lightning2": {
+				"color": [
+					{ "time": 0.4333, "color": "ffffffff" },
+					{ "time": 0.5667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.1667, "name": "RingLightning_08" },
+					{ "time": 0.2, "name": "RingLightning_06" },
+					{ "time": 0.2333, "name": "RingLightning_08" },
+					{ "time": 0.2667, "name": "RingLightning_10" },
+					{ "time": 0.3, "name": "RingLightning_12" },
+					{ "time": 0.3333, "name": "RingLightning_14" },
+					{ "time": 0.3667, "name": "RingLightning_16" },
+					{ "time": 3, "name": null }
+				]
+			},
+			"Thor_light": {
+				"color": [
+					{ "color": "def7ff80" },
+					{ "time": 0.0667, "color": "def7ffff" },
+					{ "time": 0.1333, "color": "def7ff4f", "curve": "stepped" },
+					{ "time": 0.2667, "color": "def7ff4f" },
+					{ "time": 0.5, "color": "def7ff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": null }
+				]
+			},
+			"Thor_light2": {
+				"color": [
+					{ "color": "0373ff95", "curve": "stepped" },
+					{ "time": 0.1333, "color": "0373ff95" },
+					{ "time": 0.2667, "color": "0375ff78" },
+					{ "time": 0.5, "color": "04bbff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": null }
+				]
+			},
+			"circle2": {
+				"color": [
+					{ "color": "def7ff00", "curve": "stepped" },
+					{ "time": 0.1667, "color": "def7ff00" },
+					{ "time": 0.2, "color": "def7ffff" },
+					{ "time": 1.1, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 2, "name": null }
+				]
+			},
+			"circle3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.2, "color": "ffffff00" },
+					{ "time": 0.2333, "color": "2facff95" },
+					{ "time": 0.5333, "color": "004bff59" },
+					{ "time": 0.7667, "color": "0081ff00" }
+				],
+				"attachment": [
+					{ "name": "ef_glow_frank007" },
+					{ "time": 2, "name": null }
+				]
+			},
+			"light": {
+				"color": [
+					{ "color": "82bfff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "82bfff00" },
+					{ "time": 0.4333, "color": "037eff95" },
+					{ "time": 0.6667, "color": "007cff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": null }
+				]
+			},
+			"lightening2": {
+				"color": [
+					{ "color": "59c7ff00" },
+					{ "time": 0.1667, "color": "def7ff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 0.4, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2, "name": "lightening2/LightningB_00" },
+					{ "time": 0.2333, "name": "lightening2/LightningB_01" },
+					{ "time": 0.3, "name": "lightening2/LightningB_00" },
+					{ "time": 0.3333, "name": "lightening2/LightningB_02" },
+					{ "time": 0.4, "name": "lightening2/LightningB_03" },
+					{ "time": 2, "name": null }
+				]
+			},
+			"lightening3": {
+				"color": [
+					{ "color": "59c7ff00" },
+					{ "time": 0.1667, "color": "def7ff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.3667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2333, "name": "lightening2/LightningB_01" },
+					{ "time": 0.3, "name": "lightening2/LightningB_00" },
+					{ "time": 0.3333, "name": "lightening2/LightningB_02" },
+					{ "time": 0.3667, "name": "lightening2/LightningB_03" },
+					{ "time": 0.4667, "name": null }
+				]
+			},
+			"lightening4": {
+				"color": [
+					{ "color": "59c7ff00" },
+					{ "time": 0.1667, "color": "def7ff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.3667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.2, "name": "lightening2/LightningB_01" },
+					{ "time": 0.2333, "name": "lightening2/LightningB_00" },
+					{ "time": 0.2667, "name": "lightening2/LightningB_02" },
+					{ "time": 0.3, "name": "lightening2/LightningB_03" }
+				]
+			},
+			"lightening5": {
+				"color": [
+					{ "color": "59c7ff00" },
+					{ "time": 0.1667, "color": "def7ff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.3667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2, "name": "lightening2/LightningB_01" },
+					{ "time": 0.2333, "name": "lightening2/LightningB_00" },
+					{ "time": 0.2667, "name": "lightening2/LightningB_02" },
+					{ "time": 0.3, "name": "lightening2/LightningB_03" },
+					{ "time": 2, "name": null }
+				]
+			},
+			"lightening6": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2667, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.3333, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"lightening7": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.3333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.4, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.4667, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.5333, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.6, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.6667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.7333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.8, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.8333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.8667, "name": null }
+				]
+			},
+			"lightening8": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2333, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.8333, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.9, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.9667, "name": "lightening4/FX_lightning_11" },
+					{ "time": 1.0333, "name": null }
+				]
+			},
+			"lightening9": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.2333, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.5333, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.6, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.6667, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.7333, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.8, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.8333, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.8667, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.9, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.9333, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.9667, "name": "lightening4/FX_lightning_08" },
+					{ "time": 1, "name": "lightening4/FX_lightning_09" },
+					{ "time": 1.0333, "name": "lightening4/FX_lightning_10" },
+					{ "time": 1.0667, "name": "lightening4/FX_lightning_11" },
+					{ "time": 1.1, "name": null }
+				]
+			},
+			"lightening10": {
+				"color": [
+					{ "color": "ffffffc7" }
+				],
+				"attachment": [
+					{ "time": 0.2333, "name": "lightening3/lightning_13" },
+					{ "time": 0.2667, "name": "lightening3/lightningd_14" },
+					{ "time": 0.3, "name": "lightening3/lightningd_15" },
+					{ "time": 0.3333, "name": "lightening3/lightningd_16" },
+					{ "time": 0.3667, "name": "lightening3/lightningd_17" },
+					{ "time": 0.4, "name": null }
+				]
+			},
+			"lightening11": {
+				"color": [
+					{ "color": "ffffffaa" }
+				],
+				"attachment": [
+					{ "time": 0.2667, "name": "lightening3/lightning_13" },
+					{ "time": 0.3, "name": "lightening3/lightningd_14" },
+					{ "time": 0.3333, "name": "lightening3/lightningd_15" },
+					{ "time": 0.3667, "name": "lightening3/lightningd_16" },
+					{ "time": 0.4, "name": "lightening3/lightningd_17" },
+					{ "time": 0.4333, "name": null }
+				]
+			},
+			"lightening12": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.3333, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.4, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.5333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.6, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.6667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.7333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.7667, "name": null }
+				]
+			},
+			"lightening13": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.3, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.3667, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.4, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.4667, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.5333, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.6, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.6667, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.7333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.8, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.8333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.8667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.9, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.9333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.9667, "name": null }
+				]
+			},
+			"lightening14": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.4, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.4333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.4667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.5, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.5333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.5667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 0.6, "name": "lightening4/FX_lightning_10" },
+					{ "time": 0.6333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 0.6667, "name": "lightening4/FX_lightning_00" },
+					{ "time": 0.7, "name": "lightening4/FX_lightning_01" },
+					{ "time": 0.7333, "name": "lightening4/FX_lightning_02" },
+					{ "time": 0.7667, "name": "lightening4/FX_lightning_03" },
+					{ "time": 0.8, "name": "lightening4/FX_lightning_04" },
+					{ "time": 0.8333, "name": "lightening4/FX_lightning_05" },
+					{ "time": 0.8667, "name": "lightening4/FX_lightning_06" },
+					{ "time": 0.9, "name": "lightening4/FX_lightning_07" },
+					{ "time": 0.9333, "name": "lightening4/FX_lightning_08" },
+					{ "time": 0.9667, "name": "lightening4/FX_lightning_09" },
+					{ "time": 1, "name": "lightening4/FX_lightning_10" },
+					{ "time": 1.0333, "name": "lightening4/FX_lightning_11" },
+					{ "time": 1.1, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"Lightning2": {
+				"translate": [
+					{ "x": 32.05, "y": -451.86 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.1667, "x": 1.833, "y": 1.7 },
+					{ "time": 0.2, "x": 2, "y": 2.5 }
+				]
+			},
+			"Thor_light": {
+				"translate": [
+					{ "x": 16.19, "y": 1652.3 },
+					{ "time": 0.1333, "x": 14.67, "y": 688.54 },
+					{ "time": 0.2667, "x": 14.17, "y": 369.9 }
+				],
+				"scale": [
+					{ "x": -6, "y": 6 },
+					{ "time": 0.1, "x": -4.5, "y": 4.5 }
+				]
+			},
+			"Circle2": {
+				"translate": [
+					{ "x": -2.37, "y": 66.7 }
+				],
+				"scale": [
+					{ "x": 0.5, "y": 0.5 },
+					{ "time": 0.2333, "x": 1.5 },
+					{ "time": 0.3667, "x": 0.5, "y": 0.25 },
+					{ "time": 0.4667, "x": 2 },
+					{ "time": 0.6, "x": 1.5, "y": 0.75 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			},
+			"Circle3": {
+				"translate": [
+					{ "x": 2.08, "y": 48.98 }
+				],
+				"scale": [
+					{ "x": 0.5, "y": 0.5 },
+					{ "time": 0.2333, "x": 10, "y": 7.5 },
+					{ "time": 0.4333, "x": 12.5, "y": 10 }
+				]
+			},
+			"cy_circle": {
+				"translate": [
+					{ "x": -38.49, "y": 36.06 }
+				],
+				"scale": [
+					{ "x": 1.143, "y": 0 },
+					{ "time": 0.2333, "x": 1.253, "y": 1.2 },
+					{ "time": 0.4333, "x": 1.429, "y": 1.4 }
+				]
+			},
+			"lightening2": {
+				"rotate": [
+					{ "angle": 21.59 }
+				],
+				"translate": [
+					{ "x": -37.29, "y": -17.99 }
+				],
+				"scale": [
+					{ "x": -3, "y": 4 }
+				]
+			},
+			"lightening3": {
+				"translate": [
+					{ "x": 225.12, "y": 9.76 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2.25 },
+					{ "time": 0.0333, "x": 2, "y": 2.125 },
+					{ "time": 0.1667, "x": 6, "y": 4.625 }
+				]
+			},
+			"Lightning2_scale": {
+				"translate": [
+					{ "x": -47.35, "y": 1085.13 }
+				],
+				"scale": [
+					{ "x": 1.5, "y": 0.5, "curve": "stepped" },
+					{ "time": 0.1333, "x": 1.5, "y": 0.5 },
+					{ "time": 0.2, "y": 0.8 }
+				]
+			},
+			"lightening10": {
+				"rotate": [
+					{ "angle": -32.74 }
+				],
+				"translate": [
+					{ "x": -493.63, "y": 392.03 }
+				],
+				"scale": [
+					{ "x": 0.5, "y": 0.5 },
+					{ "time": 0.2333, "x": 1.8, "y": 1.8 },
+					{ "time": 0.4, "x": 2.4, "y": 2.4 }
+				]
+			},
+			"lightening11": {
+				"rotate": [
+					{ "angle": -21.85 }
+				],
+				"translate": [
+					{ "x": -484.06, "y": 437.81 }
+				],
+				"scale": [
+					{ "x": 0.8, "y": 0.8 },
+					{ "time": 0.2667, "x": -1.4, "y": 1.4 },
+					{ "time": 0.4, "x": -2.4, "y": 2.4 }
+				]
+			},
+			"lightening4": {
+				"rotate": [
+					{ "angle": -0.93 }
+				],
+				"translate": [
+					{ "x": -11.83, "y": 65.92 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.2667, "x": -2, "y": 3 }
+				]
+			},
+			"lightening5": {
+				"rotate": [
+					{ "angle": 13.88 }
+				],
+				"translate": [
+					{ "x": 70.43, "y": 66.83 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2.25 },
+					{ "time": 0.3, "x": -6, "y": 3.75 }
+				]
+			},
+			"lightening6": {
+				"rotate": [
+					{ "angle": 21.2 }
+				],
+				"translate": [
+					{ "x": -151.98, "y": -69.82 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"lightening7": {
+				"rotate": [
+					{ "angle": 10.97 }
+				],
+				"translate": [
+					{ "x": -2.13, "y": 74.46 }
+				],
+				"scale": [
+					{ "x": 1.2, "y": 1.2 }
+				]
+			},
+			"lightening8": {
+				"rotate": [
+					{ "angle": -47.52 }
+				],
+				"translate": [
+					{ "x": 127.19, "y": 4.22 }
+				],
+				"scale": [
+					{ "x": 1.7, "y": 1.7 }
+				]
+			},
+			"ring_lightening": {
+				"scale": [
+					{ "time": 0.2667 },
+					{ "time": 1, "x": 1.5, "y": 1.2 }
+				]
+			},
+			"lightening9": {
+				"rotate": [
+					{ "angle": -5.59 }
+				],
+				"translate": [
+					{ "x": 70.07, "y": 66.72 }
+				],
+				"scale": [
+					{ "x": 0.9, "y": 0.9 }
+				]
+			},
+			"lightening12": {
+				"rotate": [
+					{ "angle": 1.07 }
+				],
+				"translate": [
+					{ "x": -81.64, "y": 54.8 }
+				],
+				"scale": [
+					{ "x": 1.3, "y": 1.3 }
+				]
+			},
+			"lightening13": {
+				"rotate": [
+					{ "angle": -9.98 }
+				],
+				"translate": [
+					{ "x": -76.11, "y": -68.45 }
+				],
+				"scale": [
+					{ "x": -1.5, "y": 1.5 }
+				]
+			},
+			"lightening14": {
+				"rotate": [
+					{ "angle": -58.2 }
+				],
+				"translate": [
+					{ "x": 53.12, "y": -26.97 }
+				],
+				"scale": [
+					{ "x": 1.5, "y": 1.5 }
+				]
+			}
+		}
+	}
+}
+}

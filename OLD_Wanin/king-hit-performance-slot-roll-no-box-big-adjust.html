@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>捕魚機中王表演流程 - 純數字滾動版</title>
+  <link rel="stylesheet" href="styles/gotcha-performance.css?v=20260622-stop-purple-number-pulse">
+</head>
+<body>
+  <main class="machine">
+    <section class="stage" aria-label="中王開獎表演">
+      <div class="scene" aria-hidden="true"></div>
+      <div class="hades-darkness" aria-hidden="true"></div>
+      <div class="shockwave"></div>
+      <canvas class="lightning-canvas" id="lightningCanvas" aria-hidden="true"></canvas>
+      <canvas class="claw-canvas" id="clawCanvas" aria-hidden="true"></canvas>
+      <canvas class="bubble-canvas" id="bubbleCanvas" aria-hidden="true"></canvas>
+      <div class="ball-layer" id="ballLayer" aria-hidden="true"></div>
+      <div class="score-gather-layer" id="scoreGatherLayer" aria-hidden="true"></div>
+      <div class="boss" aria-label="方塊角色">
+        <img class="boss-image" src="Fish_30101-Fish_30101_Idle_14.png" alt="">
+      </div>
+      <img class="result-board" src="0624.png" alt="">
+      <div class="prize-row" id="prizeRow" aria-label="下方獎金數字"></div>
+      <div class="flash"></div>
+      <div class="blackout"></div>
+    </section>
+
+    <div class="toolbar">
+      <label>
+        <span>獎金</span>
+        <input id="prizeInput" value="12800" inputmode="numeric" maxlength="8" aria-label="獎金數字">
+      </label>
+      <button class="primary" id="playButton" type="button">開始</button>
+      <button class="preset" type="button" data-value="888">3位</button>
+      <button class="preset" type="button" data-value="12800">5位</button>
+      <button class="preset" type="button" data-value="9753100">7位</button>
+      <button class="character-button" type="button" data-character-key="boss01" aria-pressed="false">法老王</button>
+      <button class="character-button" type="button" data-character-key="god10101" aria-pressed="false">雷神</button>
+      <button class="character-button" type="button" data-character-key="fish40101" aria-pressed="false">黑帝斯</button>
+      <button class="character-button" type="button" data-character-key="fish10101" aria-pressed="false">美人魚</button>
+    </div>
+  </main>
+
+  <script src="scripts/gotcha-config.js?v=20260622-stop-purple-number-pulse"></script>
+  <script src="scripts/gotcha-performance.js?v=20260622-stop-purple-number-pulse"></script>
+</body>
+</html>

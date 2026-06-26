@@ -1,0 +1,104 @@
+
+Fish_20101_Radial_FX.png
+size: 1544,1544
+format: RGBA4444
+filter: Nearest,Nearest
+repeat: none
+L_9/frame0000
+  rotate: false
+  xy: 1, 772
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0001
+  rotate: false
+  xy: 514, 1285
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0002
+  rotate: false
+  xy: 1, 515
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0003
+  rotate: false
+  xy: 514, 1028
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0004
+  rotate: false
+  xy: 1027, 1285
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0005
+  rotate: false
+  xy: 1, 258
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0006
+  rotate: false
+  xy: 514, 771
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0007
+  rotate: false
+  xy: 1027, 1028
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0008
+  rotate: false
+  xy: 1, 1
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0009
+  rotate: false
+  xy: 514, 514
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0010
+  rotate: false
+  xy: 1027, 771
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+L_9/frame0011
+  rotate: false
+  xy: 514, 257
+  size: 512, 256
+  orig: 512, 256
+  offset: 0, 0
+  index: -1
+circle_04_1
+  rotate: false
+  xy: 1027, 514
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+ring_15_1
+  rotate: false
+  xy: 1, 1029
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1

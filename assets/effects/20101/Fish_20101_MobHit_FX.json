@@ -1,0 +1,263 @@
+{
+"skeleton": { "hash": "ailao/HQDSASDIBFKsPPA3lBhJM", "spine": "3.8.99", "x": -256, "y": -128, "width": 512, "height": 823.4 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "Lightning_mobhit_00000", "parent": "root", "y": 294.03 },
+	{ "name": "骨骼", "parent": "root", "scaleY": 0.5 },
+	{ "name": "circle_05", "parent": "骨骼" },
+	{ "name": "circle_03", "parent": "root", "y": 439.4, "scaleX": 2, "scaleY": 2 },
+	{ "name": "circle_3", "parent": "root" },
+	{ "name": "light_01_", "parent": "root", "y": 25.6 },
+	{ "name": "Lightning_mobhit2/Lightning_mobhit2_00000", "parent": "root", "y": 294.03 },
+	{ "name": "glow", "parent": "root", "y": 580.18, "scaleX": 2, "scaleY": 1.5 },
+	{ "name": "Lightning_mobhit3/Lightning_mobhit3_00000", "parent": "root", "y": 294.03 }
+],
+"slots": [
+	{ "name": "circle_03", "bone": "circle_03", "attachment": "circle_03" },
+	{ "name": "Lightning_mobhit_00000", "bone": "Lightning_mobhit_00000", "attachment": "Lightning_mobhit_00000" },
+	{ "name": "circle_05", "bone": "circle_05", "attachment": "circle_05" },
+	{ "name": "Lightning_mobhit2/Lightning_mobhit2_00000", "bone": "Lightning_mobhit2/Lightning_mobhit2_00000", "attachment": "Lightning_mobhit2/Lightning_mobhit2_00000" },
+	{ "name": "light_01_", "bone": "light_01_", "attachment": "light_01_" },
+	{ "name": "glow", "bone": "glow", "attachment": "glow" },
+	{ "name": "Lightning_mobhit3/Lightning_mobhit3_00000", "bone": "Lightning_mobhit3/Lightning_mobhit3_00000", "attachment": "Lightning_mobhit3/Lightning_mobhit3_00000" },
+	{ "name": "circle_3", "bone": "circle_3", "color": "00a3ffff", "attachment": "circle_03", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Lightning_mobhit2/Lightning_mobhit2_00000": {
+				"Lightning_mobhit2/Lightning_mobhit2_00000": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00002": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00005": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00006": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00008": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00011": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00012": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00014": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00017": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00018": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00020": { "width": 400, "height": 600 },
+				"Lightning_mobhit2/Lightning_mobhit2_00023": { "width": 400, "height": 600 }
+			},
+			"Lightning_mobhit3/Lightning_mobhit3_00000": {
+				"Lightning_mobhit3/Lightning_mobhit3_00000": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00002": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00003": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00005": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00006": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00008": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00009": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00011": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00012": { "width": 400, "height": 600 },
+				"Lightning_mobhit3/Lightning_mobhit3_00014": { "width": 400, "height": 600 }
+			},
+			"Lightning_mobhit_00000": {
+				"Lightning_mobhit_00000": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00002": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00005": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00006": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00009": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00011": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00014": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00015": { "width": 400, "height": 600 },
+				"Lightning_mobhit_00018": { "width": 400, "height": 600 }
+			},
+			"circle_03": {
+				"circle_03": { "color": "007effff", "width": 256, "height": 256 }
+			},
+			"circle_3": {
+				"circle_03": { "width": 256, "height": 256 }
+			},
+			"circle_05": {
+				"circle_05": { "width": 256, "height": 256 }
+			},
+			"glow": {
+				"glow": { "y": -92.43, "width": 256, "height": 256 }
+			},
+			"light_01_": {
+				"light_01_": { "width": 256, "height": 256 }
+			}
+		}
+	}
+],
+"animations": {
+	"MobHit": {
+		"slots": {
+			"Lightning_mobhit2/Lightning_mobhit2_00000": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.1667, "name": "Lightning_mobhit2/Lightning_mobhit2_00000" },
+					{ "time": 0.2333, "name": "Lightning_mobhit2/Lightning_mobhit2_00002" },
+					{ "time": 0.3333, "name": "Lightning_mobhit2/Lightning_mobhit2_00005" },
+					{ "time": 0.3667, "name": "Lightning_mobhit2/Lightning_mobhit2_00006" },
+					{ "time": 0.4333, "name": "Lightning_mobhit2/Lightning_mobhit2_00008" },
+					{ "time": 0.5333, "name": "Lightning_mobhit2/Lightning_mobhit2_00011" },
+					{ "time": 0.5667, "name": "Lightning_mobhit2/Lightning_mobhit2_00012" },
+					{ "time": 0.6333, "name": "Lightning_mobhit2/Lightning_mobhit2_00014" },
+					{ "time": 0.7333, "name": "Lightning_mobhit2/Lightning_mobhit2_00017" },
+					{ "time": 0.7667, "name": "Lightning_mobhit2/Lightning_mobhit2_00018" },
+					{ "time": 0.8333, "name": "Lightning_mobhit2/Lightning_mobhit2_00020" },
+					{ "time": 0.9333, "name": "Lightning_mobhit2/Lightning_mobhit2_00023" },
+					{ "time": 1, "name": null }
+				]
+			},
+			"Lightning_mobhit3/Lightning_mobhit3_00000": {
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.1667, "name": "Lightning_mobhit3/Lightning_mobhit3_00000" },
+					{ "time": 0.2333, "name": "Lightning_mobhit3/Lightning_mobhit3_00002" },
+					{ "time": 0.3, "name": "Lightning_mobhit3/Lightning_mobhit3_00003" },
+					{ "time": 0.3667, "name": "Lightning_mobhit3/Lightning_mobhit3_00005" },
+					{ "time": 0.4333, "name": "Lightning_mobhit3/Lightning_mobhit3_00006" },
+					{ "time": 0.5, "name": "Lightning_mobhit3/Lightning_mobhit3_00008" },
+					{ "time": 0.5667, "name": "Lightning_mobhit3/Lightning_mobhit3_00009" },
+					{ "time": 0.6333, "name": "Lightning_mobhit3/Lightning_mobhit3_00011" },
+					{ "time": 0.7, "name": "Lightning_mobhit3/Lightning_mobhit3_00012" },
+					{ "time": 0.7667, "name": "Lightning_mobhit3/Lightning_mobhit3_00014" },
+					{ "time": 0.8333, "name": null }
+				]
+			},
+			"Lightning_mobhit_00000": {
+				"attachment": [
+					{ "time": 0.0667, "name": "Lightning_mobhit_00002" },
+					{ "time": 0.1667, "name": "Lightning_mobhit_00005" },
+					{ "time": 0.2, "name": "Lightning_mobhit_00006" },
+					{ "time": 0.3, "name": "Lightning_mobhit_00009" },
+					{ "time": 0.3667, "name": "Lightning_mobhit_00011" },
+					{ "time": 0.4667, "name": "Lightning_mobhit_00014" },
+					{ "time": 0.5, "name": "Lightning_mobhit_00015" },
+					{ "time": 0.5667, "name": "Lightning_mobhit_00018" },
+					{ "time": 0.6333, "name": null }
+				]
+			},
+			"circle_03": {
+				"color": [
+					{ "color": "ffffffb4" }
+				],
+				"attachment": [
+					{ "time": 0.6333, "name": null }
+				]
+			},
+			"circle_3": {
+				"color": [
+					{ "time": 0.6333, "color": "00a3ffff" },
+					{ "time": 1, "color": "00a2ff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.1667, "name": "circle_03" },
+					{ "time": 1, "name": null }
+				]
+			},
+			"circle_05": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1333, "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffffff" },
+					{ "time": 0.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": null }
+				]
+			},
+			"glow": {
+				"color": [
+					{ "time": 0.1, "color": "ffffffff" },
+					{ "time": 0.2333, "color": "75ffd3ff" }
+				],
+				"attachment": [
+					{ "time": 0.6333, "name": null }
+				]
+			},
+			"light_01_": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffb4" },
+					{ "time": 0.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": null },
+					{ "time": 0.1667, "name": "light_01_" }
+				]
+			}
+		},
+		"bones": {
+			"circle_05": {
+				"scale": [
+					{},
+					{
+						"time": 0.1667,
+						"x": 2,
+						"y": 2,
+						"curve": 0.433,
+						"c2": 0.6,
+						"c3": 0.626,
+						"c4": 0.99
+					},
+					{ "time": 0.3333 },
+					{ "time": 0.4667, "x": 1.3, "y": 1.3 },
+					{ "time": 0.6 }
+				]
+			},
+			"circle_03": {
+				"translate": [
+					{},
+					{ "time": 0.0667, "y": -57.59 },
+					{ "time": 0.1667, "y": -123.71 },
+					{ "time": 0.3333, "y": -171.48 },
+					{ "time": 0.3667, "y": -209.03 },
+					{ "time": 0.4667, "y": -241.03 },
+					{ "time": 0.6, "y": -326.2 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.0667, "y": 1.5 },
+					{ "time": 0.1667, "y": 2, "curve": "stepped" },
+					{ "time": 0.3333, "y": 2 },
+					{ "time": 0.3667, "y": 1.5 },
+					{ "time": 0.4667, "y": 1.25 },
+					{ "time": 0.6 }
+				]
+			},
+			"circle_3": {
+				"scale": [
+					{ "time": 0.1333 },
+					{ "time": 0.1667, "x": 1.5, "y": 1.5 },
+					{ "time": 0.3333, "x": 1.3, "y": 1.3 }
+				]
+			},
+			"light_01_": {
+				"scale": [
+					{ "time": 0.1333 },
+					{ "time": 0.2, "x": 1.1, "y": 1.1 },
+					{ "time": 0.3333, "x": 0.8, "y": 0.8 }
+				]
+			},
+			"glow": {
+				"translate": [
+					{ "time": 0.3333 },
+					{ "time": 0.3667, "y": -76.79, "curve": "stepped" },
+					{ "time": 0.4333, "y": -76.79 },
+					{ "time": 0.4667, "y": -185.4 },
+					{ "time": 0.5, "y": -223.79 },
+					{ "time": 0.5333, "y": -272.49 },
+					{ "time": 0.5667, "y": -363.92 }
+				],
+				"scale": [
+					{},
+					{ "time": 0.0667, "y": 1.667 },
+					{ "time": 0.1667, "y": 2.267, "curve": "stepped" },
+					{ "time": 0.3, "y": 2.267 },
+					{ "time": 0.3667, "y": 1.8 },
+					{ "time": 0.4667, "y": 1.533 },
+					{ "time": 0.5, "y": 1.333 },
+					{ "time": 0.5333, "y": 1.2 },
+					{ "time": 0.5667, "y": 0.887 }
+				]
+			}
+		}
+	}
+}
+}

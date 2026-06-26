@@ -1,0 +1,21 @@
+info face="MythFont7" size=80 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=0,0
+common lineHeight=80 base=80 scaleW=400 scaleH=400 pages=1 packed=0 alphaChnl=1 redChnl=4 greenChnl=4 blueChnl=4
+page id=0 file="MythFont7.png"
+chars count=16
+char id=48    x=0    y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=49    x=62   y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=50    x=124  y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=51    x=186  y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=52    x=248  y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=53    x=310  y=0    width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=54    x=0    y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=55    x=62   y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=56    x=124  y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=57    x=186  y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=43    x=248  y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=45    x=310  y=82   width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=44    x=372  y=82   width=28   height=80   xoffset=0    yoffset=0    xadvance=28   page=0  chnl=15
+char id=46    x=0    y=164  width=26   height=80   xoffset=0    yoffset=0    xadvance=26   page=0  chnl=15
+char id=215   x=28   y=164  width=60   height=80   xoffset=0    yoffset=0    xadvance=60   page=0  chnl=15
+char id=47    x=90   y=164  width=40   height=80   xoffset=0    yoffset=0    xadvance=40   page=0  chnl=15
+kernings count=0

@@ -1,0 +1,223 @@
+
+Fish_20201_Spawn_FX.png
+size: 940,940
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1_04
+  rotate: false
+  xy: 773, 34
+  size: 48, 52
+  orig: 58, 58
+  offset: 5, 3
+  index: -1
+RingLightning_06
+  rotate: false
+  xy: 110, 477
+  size: 103, 461
+  orig: 115, 461
+  offset: 6, 0
+  index: -1
+RingLightning_08
+  rotate: false
+  xy: 2, 477
+  size: 106, 461
+  orig: 115, 461
+  offset: 4, 0
+  index: -1
+RingLightning_10
+  rotate: false
+  xy: 215, 477
+  size: 99, 461
+  orig: 115, 461
+  offset: 7, 0
+  index: -1
+RingLightning_12
+  rotate: false
+  xy: 109, 14
+  size: 102, 461
+  orig: 115, 461
+  offset: 7, 0
+  index: -1
+RingLightning_14
+  rotate: false
+  xy: 2, 14
+  size: 105, 461
+  orig: 115, 461
+  offset: 7, 0
+  index: -1
+RingLightning_16
+  rotate: false
+  xy: 213, 23
+  size: 93, 452
+  orig: 115, 461
+  offset: 9, 0
+  index: -1
+cy_circle
+  rotate: false
+  xy: 837, 722
+  size: 96, 216
+  orig: 230, 230
+  offset: 67, 7
+  index: -1
+ef_glow_frank007
+  rotate: false
+  xy: 773, 88
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+lightening2/LightningB_00
+  rotate: true
+  xy: 316, 532
+  size: 174, 230
+  orig: 230, 230
+  offset: 30, 0
+  index: -1
+lightening2/LightningB_01
+  rotate: true
+  xy: 548, 579
+  size: 127, 227
+  orig: 230, 230
+  offset: 54, 3
+  index: -1
+lightening2/LightningB_02
+  rotate: false
+  xy: 695, 708
+  size: 140, 230
+  orig: 230, 230
+  offset: 52, 0
+  index: -1
+lightening2/LightningB_03
+  rotate: false
+  xy: 548, 708
+  size: 145, 230
+  orig: 230, 230
+  offset: 49, 0
+  index: -1
+lightening3/lightning_13
+  rotate: false
+  xy: 622, 284
+  size: 142, 145
+  orig: 162, 162
+  offset: 10, 7
+  index: -1
+lightening3/lightningd_14
+  rotate: false
+  xy: 468, 211
+  size: 152, 156
+  orig: 162, 162
+  offset: 7, 3
+  index: -1
+lightening3/lightningd_15
+  rotate: false
+  xy: 467, 59
+  size: 152, 150
+  orig: 162, 162
+  offset: 1, 5
+  index: -1
+lightening3/lightningd_16
+  rotate: false
+  xy: 618, 431
+  size: 149, 146
+  orig: 162, 162
+  offset: 6, 9
+  index: -1
+lightening3/lightningd_17
+  rotate: true
+  xy: 870, 451
+  size: 123, 68
+  orig: 162, 162
+  offset: 10, 69
+  index: -1
+lightening4/FX_lightning_00
+  rotate: false
+  xy: 767, 148
+  size: 79, 68
+  orig: 180, 180
+  offset: 53, 0
+  index: -1
+lightening4/FX_lightning_01
+  rotate: false
+  xy: 777, 576
+  size: 132, 130
+  orig: 180, 180
+  offset: 16, 0
+  index: -1
+lightening4/FX_lightning_02
+  rotate: true
+  xy: 481, 369
+  size: 161, 135
+  orig: 180, 180
+  offset: 11, 0
+  index: -1
+lightening4/FX_lightning_03
+  rotate: false
+  xy: 308, 458
+  size: 6, 17
+  orig: 180, 180
+  offset: 32, 58
+  index: -1
+lightening4/FX_lightning_04
+  rotate: false
+  xy: 622, 145
+  size: 143, 137
+  orig: 180, 180
+  offset: 17, 0
+  index: -1
+lightening4/FX_lightning_05
+  rotate: true
+  xy: 621, 12
+  size: 131, 150
+  orig: 180, 180
+  offset: 22, 0
+  index: -1
+lightening4/FX_lightning_06
+  rotate: false
+  xy: 308, 51
+  size: 157, 158
+  orig: 180, 180
+  offset: 19, 4
+  index: -1
+lightening4/FX_lightning_07
+  rotate: false
+  xy: 316, 373
+  size: 163, 157
+  orig: 180, 180
+  offset: 13, 7
+  index: -1
+lightening4/FX_lightning_08
+  rotate: false
+  xy: 308, 211
+  size: 158, 160
+  orig: 180, 180
+  offset: 13, 0
+  index: -1
+lightening4/FX_lightning_09
+  rotate: true
+  xy: 767, 218
+  size: 93, 71
+  orig: 180, 180
+  offset: 31, 10
+  index: -1
+lightening4/FX_lightning_10
+  rotate: false
+  xy: 766, 313
+  size: 87, 116
+  orig: 180, 180
+  offset: 15, 38
+  index: -1
+lightening4/FX_lightning_11
+  rotate: false
+  xy: 769, 447
+  size: 99, 127
+  orig: 180, 180
+  offset: 7, 41
+  index: -1
+star_00
+  rotate: false
+  xy: 316, 708
+  size: 230, 230
+  orig: 230, 230
+  offset: 0, 0
+  index: -1

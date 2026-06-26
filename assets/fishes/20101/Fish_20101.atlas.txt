@@ -1,0 +1,283 @@
+
+Fish_20101.png
+size: 990, 968
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Fish_20101_BodyArmor
+  rotate: true
+  xy: 358, 668
+  size: 126, 257
+  orig: 131, 261
+  offset: 3, 2
+  index: -1
+Fish_20101_Cloak01
+  rotate: false
+  xy: 2, 2
+  size: 417, 236
+  orig: 420, 237
+  offset: 2, 1
+  index: -1
+Fish_20101_Hair
+  rotate: false
+  xy: 182, 478
+  size: 242, 188
+  orig: 242, 188
+  offset: 0, 0
+  index: -1
+Fish_20101_Head
+  rotate: false
+  xy: 2, 516
+  size: 178, 216
+  orig: 182, 220
+  offset: 4, 4
+  index: -1
+Fish_20101_LeftFinger01
+  rotate: false
+  xy: 578, 895
+  size: 75, 71
+  orig: 78, 74
+  offset: 1, 3
+  index: -1
+Fish_20101_LeftFinger02
+  rotate: false
+  xy: 655, 892
+  size: 104, 74
+  orig: 107, 76
+  offset: 1, 0
+  index: -1
+Fish_20101_LeftLegArmor
+  rotate: true
+  xy: 298, 240
+  size: 207, 213
+  orig: 209, 216
+  offset: 1, 0
+  index: -1
+Fish_20101_RightArm01
+  rotate: false
+  xy: 524, 796
+  size: 124, 97
+  orig: 129, 102
+  offset: 2, 3
+  index: -1
+Fish_20101_RightArm02
+  rotate: false
+  xy: 208, 691
+  size: 148, 121
+  orig: 150, 129
+  offset: 1, 4
+  index: -1
+Fish_20101_RightHand
+  rotate: true
+  xy: 426, 449
+  size: 188, 322
+  orig: 188, 323
+  offset: 0, 0
+  index: -1
+Fish_20101_RightLeg02
+  rotate: false
+  xy: 2, 273
+  size: 294, 203
+  orig: 300, 206
+  offset: 3, 2
+  index: -1
+Fish_20101_v2_BackHair
+  rotate: true
+  xy: 827, 784
+  size: 100, 129
+  orig: 106, 132
+  offset: 3, 2
+  index: -1
+Fish_20101_v2_Body
+  rotate: true
+  xy: 617, 639
+  size: 150, 191
+  orig: 156, 196
+  offset: 4, 4
+  index: -1
+Fish_20101_v2_Cape_Fur
+  rotate: true
+  xy: 810, 608
+  size: 174, 178
+  orig: 176, 182
+  offset: 0, 2
+  index: -1
+Fish_20101_v2_Face
+  rotate: true
+  xy: 865, 886
+  size: 80, 115
+  orig: 86, 121
+  offset: 3, 3
+  index: -1
+Fish_20101_v2_FrontCloth
+  rotate: true
+  xy: 87, 834
+  size: 83, 131
+  orig: 89, 137
+  offset: 3, 3
+  index: -1
+Fish_20101_v2_FrontHair
+  rotate: true
+  xy: 170, 919
+  size: 47, 65
+  orig: 54, 70
+  offset: 2, 2
+  index: -1
+Fish_20101_v2_Hammer_P2
+  rotate: false
+  xy: 76, 932
+  size: 37, 34
+  orig: 41, 35
+  offset: 2, 1
+  index: -1
+Fish_20101_v2_L_Arm
+  rotate: false
+  xy: 2, 847
+  size: 83, 83
+  orig: 87, 89
+  offset: 1, 2
+  index: -1
+Fish_20101_v2_L_Elbow
+  rotate: false
+  xy: 408, 899
+  size: 168, 67
+  orig: 175, 74
+  offset: 3, 3
+  index: -1
+Fish_20101_v2_L_Feet
+  rotate: false
+  xy: 761, 887
+  size: 102, 79
+  orig: 109, 86
+  offset: 4, 3
+  index: -1
+Fish_20101_v2_L_KneeArmor
+  rotate: true
+  xy: 325, 907
+  size: 59, 81
+  orig: 65, 83
+  offset: 2, 2
+  index: -1
+Fish_20101_v2_L_Leg
+  rotate: false
+  xy: 513, 224
+  size: 227, 223
+  orig: 233, 228
+  offset: 3, 1
+  index: -1
+Fish_20101_v2_R_Arm
+  rotate: true
+  xy: 2, 734
+  size: 98, 204
+  orig: 104, 207
+  offset: 3, 2
+  index: -1
+Fish_20101_v2_R_Elbow
+  rotate: true
+  xy: 650, 791
+  size: 94, 175
+  orig: 99, 178
+  offset: 1, 2
+  index: -1
+Fish_20101_v2_R_Hammer_P1
+  rotate: true
+  xy: 220, 814
+  size: 91, 153
+  orig: 97, 157
+  offset: 3, 2
+  index: -1
+Fish_20101_v2_R_Knee
+  rotate: false
+  xy: 375, 804
+  size: 147, 93
+  orig: 151, 100
+  offset: 1, 3
+  index: -1
+Fish_20101_v2_R_KneeArmor
+  rotate: false
+  xy: 2, 940
+  size: 72, 26
+  orig: 72, 26
+  offset: 0, 0
+  index: -1
+Fish_20101_v2_R_Shoe
+  rotate: true
+  xy: 237, 909
+  size: 57, 86
+  orig: 63, 94
+  offset: 2, 4
+  index: -1
+Fish_20101_v2_R_Thigh
+  rotate: true
+  xy: 750, 411
+  size: 195, 224
+  orig: 198, 231
+  offset: 3, 4
+  index: -1
+Fish_20101_v2_R_Toe
+  rotate: false
+  xy: 115, 931
+  size: 53, 35
+  orig: 61, 43
+  offset: 4, 4
+  index: -1
+
+Fish_20101_2.png
+size: 926, 738
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Fish_20101_Cloak02
+  rotate: false
+  xy: 2, 2
+  size: 922, 734
+  orig: 923, 737
+  offset: 0, 3
+  index: -1
+
+Fish_20101_3.png
+size: 952, 782
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Fish_20101_Body
+  rotate: true
+  xy: 336, 440
+  size: 340, 432
+  orig: 344, 435
+  offset: 1, 3
+  index: -1
+Fish_20101_LeftArm
+  rotate: true
+  xy: 2, 66
+  size: 372, 496
+  orig: 372, 496
+  offset: 0, 0
+  index: -1
+Fish_20101_RightLeg01
+  rotate: false
+  xy: 2, 467
+  size: 332, 313
+  orig: 333, 321
+  offset: 0, 4
+  index: -1
+Fish_20101_v2_Cape_Front
+  rotate: false
+  xy: 500, 2
+  size: 450, 436
+  orig: 450, 437
+  offset: 0, 1
+  index: -1
+
+Fish_20101_4.png
+size: 549, 728
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Fish_20101_LeftLeg
+  rotate: false
+  xy: 2, 2
+  size: 545, 724
+  orig: 548, 724
+  offset: 1, 0
+  index: -1

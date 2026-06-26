@@ -1,0 +1,251 @@
+
+Fish_20101_MobHit_FX.png
+size: 992,1119
+format: RGBA4444
+filter: Nearest,Nearest
+repeat: none
+Lightning_mobhit2/Lightning_mobhit2_00000
+  rotate: false
+  xy: 483, 1039
+  size: 105, 79
+  orig: 400, 600
+  offset: 93, 32
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00002
+  rotate: false
+  xy: 603, 891
+  size: 284, 123
+  orig: 400, 600
+  offset: 48, 2
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00005
+  rotate: false
+  xy: 272, 2
+  size: 330, 109
+  orig: 400, 600
+  offset: 31, 18
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00006
+  rotate: false
+  xy: 603, 1015
+  size: 319, 103
+  orig: 400, 600
+  offset: 35, 17
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00008
+  rotate: false
+  xy: 164, 1
+  size: 107, 110
+  orig: 400, 600
+  offset: 110, 10
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00011
+  rotate: false
+  xy: 603, 63
+  size: 163, 108
+  orig: 400, 600
+  offset: 83, 7
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00012
+  rotate: false
+  xy: 603, 524
+  size: 195, 109
+  orig: 400, 600
+  offset: 83, 7
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00014
+  rotate: false
+  xy: 483, 499
+  size: 92, 87
+  orig: 400, 600
+  offset: 174, 16
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00017
+  rotate: false
+  xy: 888, 888
+  size: 94, 81
+  orig: 400, 600
+  offset: 115, 13
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00018
+  rotate: false
+  xy: 483, 415
+  size: 90, 83
+  orig: 400, 600
+  offset: 163, 27
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00020
+  rotate: false
+  xy: 358, 1050
+  size: 62, 68
+  orig: 400, 600
+  offset: 133, 25
+  index: -1
+Lightning_mobhit2/Lightning_mobhit2_00023
+  rotate: false
+  xy: 538, 762
+  size: 57, 49
+  orig: 400, 600
+  offset: 172, 36
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00000
+  rotate: false
+  xy: 421, 1058
+  size: 59, 60
+  orig: 400, 600
+  offset: 201, 74
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00002
+  rotate: false
+  xy: 923, 1056
+  size: 68, 62
+  orig: 400, 600
+  offset: 213, 86
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00003
+  rotate: false
+  xy: 919, 970
+  size: 71, 42
+  orig: 400, 600
+  offset: 240, 120
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00005
+  rotate: false
+  xy: 923, 1013
+  size: 63, 42
+  orig: 400, 600
+  offset: 262, 125
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00006
+  rotate: false
+  xy: 538, 656
+  size: 53, 53
+  orig: 400, 600
+  offset: 138, 91
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00008
+  rotate: false
+  xy: 538, 710
+  size: 54, 51
+  orig: 400, 600
+  offset: 119, 101
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00009
+  rotate: false
+  xy: 538, 603
+  size: 51, 52
+  orig: 400, 600
+  offset: 98, 81
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00011
+  rotate: false
+  xy: 483, 118
+  size: 50, 53
+  orig: 400, 600
+  offset: 88, 45
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00012
+  rotate: false
+  xy: 799, 595
+  size: 38, 38
+  orig: 400, 600
+  offset: 92, 27
+  index: -1
+Lightning_mobhit3/Lightning_mobhit3_00014
+  rotate: false
+  xy: 888, 984
+  size: 30, 30
+  orig: 400, 600
+  offset: 98, 19
+  index: -1
+Lightning_mobhit_00000
+  rotate: false
+  xy: 860, 593
+  size: 131, 294
+  orig: 400, 600
+  offset: 134, 293
+  index: -1
+Lightning_mobhit_00002
+  rotate: false
+  xy: 164, 112
+  size: 136, 473
+  orig: 400, 600
+  offset: 122, 109
+  index: -1
+Lightning_mobhit_00005
+  rotate: false
+  xy: 1, 557
+  size: 151, 561
+  orig: 400, 600
+  offset: 111, 18
+  index: -1
+Lightning_mobhit_00006
+  rotate: false
+  xy: 1, 9
+  size: 162, 547
+  orig: 400, 600
+  offset: 111, 10
+  index: -1
+Lightning_mobhit_00009
+  rotate: false
+  xy: 153, 586
+  size: 204, 532
+  orig: 400, 600
+  offset: 108, 18
+  index: -1
+Lightning_mobhit_00011
+  rotate: false
+  xy: 301, 123
+  size: 181, 462
+  orig: 400, 600
+  offset: 152, 23
+  index: -1
+Lightning_mobhit_00014
+  rotate: false
+  xy: 603, 172
+  size: 181, 351
+  orig: 400, 600
+  offset: 152, 28
+  index: -1
+Lightning_mobhit_00015
+  rotate: false
+  xy: 799, 268
+  size: 189, 324
+  orig: 400, 600
+  offset: 142, 34
+  index: -1
+Lightning_mobhit_00018
+  rotate: false
+  xy: 785, 58
+  size: 163, 209
+  orig: 400, 600
+  offset: 159, 51
+  index: -1
+circle_03
+  rotate: false
+  xy: 603, 634
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+circle_05
+  rotate: false
+  xy: 358, 812
+  size: 226, 226
+  orig: 256, 256
+  offset: 15, 15
+  index: -1
+glow
+  rotate: false
+  xy: 483, 181
+  size: 82, 233
+  orig: 256, 256
+  offset: 89, 10
+  index: -1
+light_01_
+  rotate: false
+  xy: 358, 587
+  size: 179, 224
+  orig: 256, 256
+  offset: 38, 2
+  index: -1

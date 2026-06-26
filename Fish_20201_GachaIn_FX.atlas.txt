@@ -1,0 +1,341 @@
+
+Fish_20201_GachaIn_FX.png
+size: 2008,2008
+format: RGBA4444
+filter: Nearest,Nearest
+repeat: none
+images/GroundCrack_1_
+  rotate: false
+  xy: 362, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/GroundCrack_2_
+  rotate: false
+  xy: 619, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Light_02_
+  rotate: false
+  xy: 876, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00000
+  rotate: false
+  xy: 1, 1285
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00002
+  rotate: false
+  xy: 1, 564
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00005
+  rotate: false
+  xy: 402, 1285
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00006
+  rotate: false
+  xy: 402, 564
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00008
+  rotate: false
+  xy: 803, 1285
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00011
+  rotate: false
+  xy: 803, 564
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00012
+  rotate: false
+  xy: 1204, 1285
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00015
+  rotate: false
+  xy: 1204, 564
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00017
+  rotate: false
+  xy: 1605, 1285
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning2/Lightning_00020
+  rotate: false
+  xy: 1605, 564
+  size: 400, 720
+  orig: 400, 720
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00000
+  rotate: false
+  xy: 1133, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00002
+  rotate: false
+  xy: 1390, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00005
+  rotate: false
+  xy: 1647, 307
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00006
+  rotate: false
+  xy: 362, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00008
+  rotate: false
+  xy: 619, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00011
+  rotate: false
+  xy: 876, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00012
+  rotate: false
+  xy: 1133, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Lightning_around2/New/lightning_around2_00015
+  rotate: false
+  xy: 1390, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/Ring_06
+  rotate: false
+  xy: 1, 203
+  size: 360, 360
+  orig: 360, 360
+  offset: 0, 0
+  index: -1
+images/Ring_07
+  rotate: false
+  xy: 1647, 50
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+
+Fish_20201_GachaIn_FX2.png
+size: 1544,1544
+format: RGBA4444
+filter: Nearest,Nearest
+repeat: none
+images/circle_02_
+  rotate: false
+  xy: 1, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/circle_03
+  rotate: false
+  xy: 258, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/circle_04
+  rotate: false
+  xy: 515, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00000
+  rotate: false
+  xy: 772, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00002
+  rotate: false
+  xy: 1029, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00005
+  rotate: false
+  xy: 1286, 1286
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00006
+  rotate: false
+  xy: 1, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00008
+  rotate: false
+  xy: 258, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00011
+  rotate: false
+  xy: 515, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00012
+  rotate: false
+  xy: 772, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/New/lightning_around_00015
+  rotate: false
+  xy: 1029, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00000
+  rotate: false
+  xy: 1286, 1029
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00003
+  rotate: false
+  xy: 1, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00006
+  rotate: false
+  xy: 258, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00009
+  rotate: false
+  xy: 515, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00012
+  rotate: false
+  xy: 772, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00015
+  rotate: false
+  xy: 1029, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00018
+  rotate: false
+  xy: 1286, 772
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00021
+  rotate: false
+  xy: 1, 515
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00024
+  rotate: false
+  xy: 258, 515
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/lightning_around/lightning_around_00027
+  rotate: false
+  xy: 515, 515
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/speedline_00000
+  rotate: false
+  xy: 772, 515
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+images/索爾殘影_00000
+  rotate: false
+  xy: 1029, 494
+  size: 171, 277
+  orig: 171, 277
+  offset: 0, 0
+  index: -1
+images/索爾殘影_200000
+  rotate: false
+  xy: 1201, 494
+  size: 171, 277
+  orig: 171, 277
+  offset: 0, 0
+  index: -1
