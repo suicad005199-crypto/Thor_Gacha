@@ -117,6 +117,14 @@ function normalizeScoreText(value) {
 
 const defaultCurrencyCode = "TWD";
 const betOptionMultipliers = [1, 3, 5, 7, 10, 15, 20, 30, 40, 50, 75, 100, 150, 200, 300, 400, 500, 600, 800, 1000];
+const lightningScoreFitBox = {
+  widthRatio: .17,
+  heightRatio: .105,
+  minWidth: 118,
+  maxWidth: 270,
+  minHeight: 48,
+  maxHeight: 92,
+};
 const currencyBetBases = [
   { code: "CNY", baseBet: 0.04 },
   { code: "HKD", baseBet: 0.2 },
@@ -3537,15 +3545,12 @@ function isStrongLightningPoint(point) {
       return lightningScoreValue(point) > 1000 || Boolean(point.strong);
     }
 
-function lightningScoreDepth(point) {
-      const y = Number(point.scoreY ?? point.y);
-      const depth = clampNumber((Number.isFinite(y) ? y : 62) - 40, 0, 44) / 44;
+function lightningScoreFitBoxSize() {
+      const stageWidth = stage.clientWidth || 1120;
+      const stageHeight = stage.clientHeight || stageWidth * 9 / 16;
       return {
-        opacity: .9 + depth * .1,
-        popScale: 1.08 + depth * .14,
-        scale: .92 + depth * .18,
-        shadowAlpha: .5 + depth * .28,
-        shadowLift: 3.2 + depth * 2.4,
+        width: Math.round(clampNumber(stageWidth * lightningScoreFitBox.widthRatio, lightningScoreFitBox.minWidth, lightningScoreFitBox.maxWidth)),
+        height: Math.round(clampNumber(stageHeight * lightningScoreFitBox.heightRatio, lightningScoreFitBox.minHeight, lightningScoreFitBox.maxHeight)),
       };
     }
 
@@ -3553,10 +3558,10 @@ function createLightningScore(point, runId) {
       createThorScoreBackFx(point, runId);
       const score = document.createElement("div");
       const strong = isStrongLightningPoint(point);
-      const depth = lightningScoreDepth(point);
       const isThorModernLightning = activeCharacterKey === "god10101" && !activeCharacter.legacyLightning && !point.legacyLightning;
       const isBonusScore = isThorModernLightning && Number(point.configuredStrikeNumber) >= 7;
       const scoreFont = isThorModernLightning && openingScoreBitmapFont ? openingScoreBitmapFont : null;
+      const fitBox = isThorModernLightning ? lightningScoreFitBoxSize() : null;
       const hasExplicitScorePosition = Number.isFinite(Number(point.scoreX)) || Number.isFinite(Number(point.scoreY));
       const scoreX = Number(point.scoreX ?? point.x);
       const scoreY = Number(point.scoreY ?? point.y);
@@ -3575,14 +3580,12 @@ function createLightningScore(point, runId) {
         ? String(point.configuredStrikeNumber)
         : "";
       score.dataset.textScale = String(point.textScale || (strong ? .82 : .7));
-      if (!activeCharacter.legacyLightning && !point.legacyLightning) {
-        score.style.setProperty("--score-depth-opacity", depth.opacity.toFixed(3));
-        score.style.setProperty("--score-depth-pop", depth.popScale.toFixed(3));
-        score.style.setProperty("--score-depth-scale", depth.scale.toFixed(3));
-        score.style.setProperty("--score-shadow-alpha", depth.shadowAlpha.toFixed(3));
-        score.style.setProperty("--score-shadow-lift", `${depth.shadowLift.toFixed(1)}px`);
+      if (fitBox) {
+        score.dataset.fitBoxWidth = String(fitBox.width);
+        score.dataset.fitBoxHeight = String(fitBox.height);
       }
       setBitmapText(score, point.text || "x0", point.textScale || (strong ? .82 : .7), {
+        fitBox,
         font: scoreFont || undefined,
         opening: true,
       });
@@ -3608,9 +3611,15 @@ function setLightningScoreValue(score, value, scaleMultiplier = null) {
       const font = score.classList.contains("is-bonus-score") && openingScoreBitmapFont
         ? openingScoreBitmapFont
         : undefined;
+      const fitBoxWidth = Number(score.dataset.fitBoxWidth);
+      const fitBoxHeight = Number(score.dataset.fitBoxHeight);
+      const fitBox = Number.isFinite(fitBoxWidth) && Number.isFinite(fitBoxHeight)
+        ? { width: fitBoxWidth, height: fitBoxHeight }
+        : null;
       score.dataset.text = text;
       score.dataset.scoreValue = text;
       setBitmapText(score, text, scale, {
+        fitBox,
         font,
         opening: true,
       });
@@ -4086,6 +4095,36 @@ function resolveRunTotals() {
       return openingTextValue(text) >= threshold ? highOpenBitmapFont : bitmapFont;
     }
 
+    function bitmapTextMetrics(text, font) {
+      const characters = [...String(text)];
+      return characters.reduce((metrics, character) => {
+        const glyph = font.chars[character] || font.chars[0];
+        return {
+          width: metrics.width + glyph.width,
+          height: Math.max(metrics.height, glyph.height),
+          characterCount: metrics.characterCount + 1,
+        };
+      }, { width: 0, height: 0, characterCount: 0 });
+    }
+
+    function fitBitmapTextScale(text, font, scale, fitBox = null) {
+      if (!fitBox) return scale;
+
+      const maxWidth = Number(fitBox.width);
+      const maxHeight = Number(fitBox.height);
+      if (!Number.isFinite(maxWidth) || !Number.isFinite(maxHeight) || maxWidth <= 0 || maxHeight <= 0) {
+        return scale;
+      }
+
+      const metrics = bitmapTextMetrics(text, font);
+      if (metrics.width <= 0 || metrics.height <= 0) return scale;
+
+      const gapWidth = Math.max(0, metrics.characterCount - 1);
+      const widthScale = (maxWidth - gapWidth) / metrics.width;
+      const heightScale = maxHeight / metrics.height;
+      return Math.min(scale, Math.max(.1, widthScale), Math.max(.1, heightScale));
+    }
+
     function setBitmapText(container, text, scaleMultiplier = .46, options = {}) {
       const font = options.font || bitmapFontForText(text, options);
       const scaleBoost = Number.isFinite(font.scaleBoost)
@@ -4093,7 +4132,8 @@ function resolveRunTotals() {
         : font === highOpenBitmapFont
         ? (config.highOpenBitmapFont.scaleBoost ?? 1)
         : 1;
-      const scale = digitScale() * scaleMultiplier * scaleBoost;
+      const baseScale = digitScale() * scaleMultiplier * scaleBoost;
+      const scale = fitBitmapTextScale(text, font, baseScale, options.fitBox);
       container.replaceChildren();
 
       [...String(text)].forEach((character) => {
