@@ -1,0 +1,54 @@
+{
+  "image": "lightning-orange.png",
+  "source": "lightning-orange.png",
+  "frameWidth": 147,
+  "frameHeight": 389,
+  "frameCount": 5,
+  "columns": 5,
+  "rows": 1,
+  "sheetWidth": 735,
+  "sheetHeight": 389,
+  "uniformFrameDurationMs": 70,
+  "frames": [
+    {
+      "index": 0,
+      "x": 0,
+      "y": 0,
+      "w": 147,
+      "h": 389,
+      "durationMs": 70
+    },
+    {
+      "index": 1,
+      "x": 147,
+      "y": 0,
+      "w": 147,
+      "h": 389,
+      "durationMs": 70
+    },
+    {
+      "index": 2,
+      "x": 294,
+      "y": 0,
+      "w": 147,
+      "h": 389,
+      "durationMs": 70
+    },
+    {
+      "index": 3,
+      "x": 441,
+      "y": 0,
+      "w": 147,
+      "h": 389,
+      "durationMs": 70
+    },
+    {
+      "index": 4,
+      "x": 588,
+      "y": 0,
+      "w": 147,
+      "h": 389,
+      "durationMs": 70
+    }
+  ]
+}

@@ -292,6 +292,18 @@ window.GotchaPerformanceConfig = {
         width: 360,
         height: 205,
       },
+      strikeSpriteFx: {
+        enabled: true,
+        strikes: [9],
+        metadata: "assets/thor/effects/lightning/lightning-orange_spritesheet.json",
+        image: "assets/thor/effects/lightning/lightning-orange.png",
+        durationMs: 820,
+        fadeOutMs: 260,
+        opacity: .96,
+        loop: true,
+        width: 210,
+        height: 320,
+      },
       hiddenSlots: [
         "images/Light_02",
         "images/Ring_06",

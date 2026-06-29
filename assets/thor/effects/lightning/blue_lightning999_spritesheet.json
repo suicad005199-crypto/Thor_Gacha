@@ -4,7 +4,7 @@
   "sourceUrl": "https://www.pinterest.com/pin/651896114855865026/",
   "frameWidth": 640,
   "frameHeight": 360,
-  "frameCount": 141,
+  "frameCount": 150,
   "columns": 10,
   "rows": 15,
   "sheetWidth": 6400,
@@ -483,6 +483,56 @@
       "sourceTimeMs": 3003.003,
       "x": 3200,
       "y": 1440,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 46,
+      "sourceFrame": 92,
+      "sourceTimeMs": 3069.736,
+      "x": 3840,
+      "y": 1440,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 47,
+      "sourceFrame": 94,
+      "sourceTimeMs": 3136.47,
+      "x": 4480,
+      "y": 1440,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 48,
+      "sourceFrame": 96,
+      "sourceTimeMs": 3203.203,
+      "x": 5120,
+      "y": 1440,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 49,
+      "sourceFrame": 98,
+      "sourceTimeMs": 3269.937,
+      "x": 5760,
+      "y": 1440,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 50,
+      "sourceFrame": 100,
+      "sourceTimeMs": 3336.67,
+      "x": 0,
+      "y": 1800,
       "w": 640,
       "h": 360,
       "durationMs": 66.733
@@ -1436,18 +1486,46 @@
       "w": 640,
       "h": 360,
       "durationMs": 66.733
+    },
+    {
+      "index": 146,
+      "sourceFrame": 292,
+      "sourceTimeMs": 9743.076,
+      "x": 3840,
+      "y": 5040,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 147,
+      "sourceFrame": 294,
+      "sourceTimeMs": 9809.81,
+      "x": 4480,
+      "y": 5040,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 148,
+      "sourceFrame": 296,
+      "sourceTimeMs": 9876.543,
+      "x": 5120,
+      "y": 5040,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
+    },
+    {
+      "index": 149,
+      "sourceFrame": 298,
+      "sourceTimeMs": 9943.277,
+      "x": 5760,
+      "y": 5040,
+      "w": 640,
+      "h": 360,
+      "durationMs": 66.733
     }
-  ],
-  "removedExposureFrameIndexes": [
-    46,
-    47,
-    48,
-    49,
-    50,
-    146,
-    147,
-    148,
-    149
-  ],
-  "originalFrameCount": 150
+  ]
 }

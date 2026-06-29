@@ -917,6 +917,25 @@
       animation: chipGather 720ms cubic-bezier(.18, .82, .22, 1) forwards;
     }
 
+    .thor-strike-sprite-fx {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 19;
+      width: var(--strike-sprite-width, 210px);
+      height: var(--strike-sprite-height, 320px);
+      max-width: 28vw;
+      max-height: 44vw;
+      opacity: 1;
+      pointer-events: none;
+      transform: translate(-50%, -88%);
+      mix-blend-mode: screen;
+      filter:
+        brightness(1.05)
+        contrast(1.04)
+        drop-shadow(0 0 12px rgba(255, 98, 21, .4));
+    }
+
     .lightning-score.is-visible {
       animation: lightningScorePop 420ms cubic-bezier(.12, 1.25, .18, 1) forwards;
     }

@@ -405,8 +405,8 @@ const thorIntroFxPromiseCache = new WeakMap();
 let activeThorIntroFx = null;
 const activeThorScoreBackFx = [];
 let thorScoreBackFxFrameId = 0;
-let thorScoreSpriteFxData = null;
-let thorScoreSpriteFxPromise = null;
+const thorScoreSpriteFxDataCache = new Map();
+const thorScoreSpriteFxPromiseCache = new Map();
 const thorFxLogPrefix = "[雷神FX]";
 const enableThorFxDebugLog = false;
 let bossSpineCanvas = null;
@@ -1190,9 +1190,10 @@ function loadImageElement(src) {
 
 async function loadThorScoreSpriteFxData(spriteConfig) {
       if (!spriteConfig?.metadata) return null;
-      if (thorScoreSpriteFxData) return thorScoreSpriteFxData;
-      if (!thorScoreSpriteFxPromise) {
-        thorScoreSpriteFxPromise = fetch(spriteConfig.metadata)
+      const cacheKey = `${spriteConfig.metadata}|${spriteConfig.image || ""}`;
+      if (thorScoreSpriteFxDataCache.has(cacheKey)) return thorScoreSpriteFxDataCache.get(cacheKey);
+      if (!thorScoreSpriteFxPromiseCache.has(cacheKey)) {
+        const promise = fetch(spriteConfig.metadata)
           .then((response) => response.json())
           .then(async (metadata) => {
             const metadataUrl = new URL(spriteConfig.metadata, document.baseURI);
@@ -1203,16 +1204,18 @@ async function loadThorScoreSpriteFxData(spriteConfig) {
             if (!image) throw new Error(`Thor score sprite image failed to load: ${imageUrl}`);
             const frames = Array.isArray(metadata.frames) ? metadata.frames : [];
             if (!frames.length) throw new Error("Thor score sprite metadata has no frames.");
-            thorScoreSpriteFxData = { frames, image, metadata };
-            return thorScoreSpriteFxData;
+            const spriteData = { frames, image, metadata };
+            thorScoreSpriteFxDataCache.set(cacheKey, spriteData);
+            return spriteData;
           })
           .catch((error) => {
-            thorScoreSpriteFxPromise = null;
+            thorScoreSpriteFxPromiseCache.delete(cacheKey);
             warnThorFx("Thor score sprite FX failed to load", error);
             return null;
           });
+        thorScoreSpriteFxPromiseCache.set(cacheKey, promise);
       }
-      return thorScoreSpriteFxPromise;
+      return thorScoreSpriteFxPromiseCache.get(cacheKey);
     }
 
 function logThorFx(message, details) {
@@ -1886,11 +1889,32 @@ function shouldCreateThorScoreBackFx(point) {
       return Number.isFinite(strikeNumber) && strikeNumber > 0 && strikeNumber <= maxStrike;
     }
 
-function shouldUseThorScoreSpriteFx(strikeNumber) {
+function getThorSpriteFxConfig(spriteConfig, strikeNumber) {
+      if (!spriteConfig || spriteConfig.enabled === false) return null;
+      const candidates = [
+        ...(Array.isArray(spriteConfig.variants) ? spriteConfig.variants : []),
+        spriteConfig,
+      ];
+      const matched = candidates.find((candidate) => {
+        if (!candidate || candidate.enabled === false) return false;
+        const strikes = Array.isArray(candidate.strikes) ? candidate.strikes : [];
+        return strikes.some((strike) => Number(strike) === strikeNumber);
+      });
+      return matched ? { ...spriteConfig, ...matched, variants: undefined } : null;
+    }
+
+function getThorScoreSpriteFxConfig(strikeNumber) {
       const spriteConfig = thorIntroFxConfig?.scoreSpriteFx;
-      if (!spriteConfig || spriteConfig.enabled === false) return false;
-      const strikes = Array.isArray(spriteConfig.strikes) ? spriteConfig.strikes : [];
-      return strikes.some((strike) => Number(strike) === strikeNumber);
+      return getThorSpriteFxConfig(spriteConfig, strikeNumber);
+    }
+
+function shouldUseThorScoreSpriteFx(strikeNumber) {
+      return Boolean(getThorScoreSpriteFxConfig(strikeNumber));
+    }
+
+function getThorStrikeSpriteFxConfig(strikeNumber) {
+      const spriteConfig = thorIntroFxConfig?.strikeSpriteFx;
+      return getThorSpriteFxConfig(spriteConfig, strikeNumber);
     }
 
 function createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig = {}) {
@@ -1938,8 +1962,8 @@ function createThorScoreBackFx(point, runId) {
       const scoreY = Number(point.scoreY ?? point.y);
       const strong = isStrongLightningPoint(point);
       const screenOffsetY = Number(thorIntroFxConfig.scoreLoopScreenOffsetY || 0);
-      const spriteConfig = thorIntroFxConfig.scoreSpriteFx || {};
-      const useSpriteFx = shouldUseThorScoreSpriteFx(strikeNumber);
+      const spriteConfig = getThorScoreSpriteFxConfig(strikeNumber) || {};
+      const useSpriteFx = Boolean(spriteConfig.metadata || spriteConfig.image);
       const scorePoint = {
         x: Number.isFinite(scoreX) ? scoreX : 50,
         y: Number.isFinite(scoreY) ? scoreY - (strong ? 6.5 : 5.5) + screenOffsetY : 50,
@@ -2030,6 +2054,39 @@ function createThorScoreBackFx(point, runId) {
           canvasClass: fxRuntime.canvas.className,
         });
       });
+    }
+
+function createThorStrikeSpriteFx(point, runId) {
+      const strikeNumber = Number(point.configuredStrikeNumber);
+      const spriteConfig = getThorStrikeSpriteFxConfig(strikeNumber);
+      if (!spriteConfig) return false;
+
+      const canvas = document.createElement("canvas");
+      canvas.className = "thor-strike-sprite-fx is-sprite-fx";
+      setPoint(canvas, point);
+      canvas.style.setProperty("--strike-sprite-width", `${Number(spriteConfig.width || 210)}px`);
+      canvas.style.setProperty("--strike-sprite-height", `${Number(spriteConfig.height || 320)}px`);
+      if (Number.isFinite(Number(spriteConfig.zIndex))) {
+        canvas.style.zIndex = String(Number(spriteConfig.zIndex));
+      }
+      scoreGatherLayer.append(canvas);
+
+      void loadThorScoreSpriteFxData(spriteConfig).then((spriteData) => {
+        if (!spriteData || runId !== sequenceId || !canvas.isConnected) {
+          canvas.remove();
+          return;
+        }
+        const fxRuntime = createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig);
+        if (!fxRuntime || runId !== sequenceId || !canvas.isConnected) {
+          disposeThorScoreBackFx(fxRuntime);
+          canvas.remove();
+          return;
+        }
+        activeThorScoreBackFx.push(fxRuntime);
+        startThorScoreBackFxRenderer();
+      });
+
+      return true;
     }
 
 async function startBossSpineCharacter(characterKey) {
@@ -3956,7 +4013,9 @@ function triggerLightningStrike(point, runId) {
         window.setTimeout(() => stage.classList.remove("stage--lightning-shake"), strong ? 240 : 180);
       }
 
-      const usedMobHitEffect = isModernThorStrike && createThorMobHitEffect(strikePoint, strong, tone);
+      const usedStrikeSpriteFx = isModernThorStrike && createThorStrikeSpriteFx(strikePoint, runId);
+      const usedMobHitEffect = isModernThorStrike
+        && (usedStrikeSpriteFx || createThorMobHitEffect(strikePoint, strong, tone));
       if (!usedMobHitEffect && !isModernThorStrike) {
         lightningCircles.push(new LightningMagicCircle(x, y, strong, tone));
       }
