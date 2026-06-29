@@ -258,7 +258,7 @@ window.GotchaPerformanceConfig = {
       sourceGlobal: "ThorIntroGachaInFxSource",
       animation: "Fish_20101_Gacha_In",
       scale: 1,
-      openingScale: 2.05,
+      openingScale: 1.5,
       openingDurationMs: 720,
       openingViewPadding: .56,
       offsetX: 0,
