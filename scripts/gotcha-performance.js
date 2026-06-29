@@ -405,6 +405,8 @@ const thorIntroFxPromiseCache = new WeakMap();
 let activeThorIntroFx = null;
 const activeThorScoreBackFx = [];
 let thorScoreBackFxFrameId = 0;
+let thorScoreSpriteFxData = null;
+let thorScoreSpriteFxPromise = null;
 const thorFxLogPrefix = "[雷神FX]";
 const enableThorFxDebugLog = false;
 let bossSpineCanvas = null;
@@ -1173,6 +1175,46 @@ function loadSpinePageImages(data) {
       return loadSpinePageImagesFromList(data.pages, data.textureBase, data.textureDataUrls);
     }
 
+function loadImageElement(src) {
+      const image = new Image();
+      image.src = src;
+      return new Promise((resolve) => {
+        if (image.complete && image.naturalWidth) {
+          resolve(image);
+          return;
+        }
+        image.addEventListener("load", () => resolve(image), { once: true });
+        image.addEventListener("error", () => resolve(null), { once: true });
+      });
+    }
+
+async function loadThorScoreSpriteFxData(spriteConfig) {
+      if (!spriteConfig?.metadata) return null;
+      if (thorScoreSpriteFxData) return thorScoreSpriteFxData;
+      if (!thorScoreSpriteFxPromise) {
+        thorScoreSpriteFxPromise = fetch(spriteConfig.metadata)
+          .then((response) => response.json())
+          .then(async (metadata) => {
+            const metadataUrl = new URL(spriteConfig.metadata, document.baseURI);
+            const imageUrl = spriteConfig.image
+              ? new URL(spriteConfig.image, document.baseURI).href
+              : new URL(metadata.image || "", metadataUrl).href;
+            const image = await loadImageElement(imageUrl);
+            if (!image) throw new Error(`Thor score sprite image failed to load: ${imageUrl}`);
+            const frames = Array.isArray(metadata.frames) ? metadata.frames : [];
+            if (!frames.length) throw new Error("Thor score sprite metadata has no frames.");
+            thorScoreSpriteFxData = { frames, image, metadata };
+            return thorScoreSpriteFxData;
+          })
+          .catch((error) => {
+            thorScoreSpriteFxPromise = null;
+            warnThorFx("Thor score sprite FX failed to load", error);
+            return null;
+          });
+      }
+      return thorScoreSpriteFxPromise;
+    }
+
 function logThorFx(message, details) {
       if (!enableThorFxDebugLog) return;
       if (details === undefined) {
@@ -1733,6 +1775,45 @@ function renderThorScoreBackFx(now) {
           ? Math.max(0, Math.min(1, (fx.durationMs - age) / fadeOutMs))
           : 1;
         fx.canvas.style.opacity = String(fadeAlpha);
+        if (fx.type === "sprite") {
+          const frameTime = fx.loop
+            ? age % fx.sourceDurationMs
+            : Math.min(age, Math.max(0, fx.sourceDurationMs - 1));
+          let elapsedFrameTime = 0;
+          let frame = fx.frames[0];
+          for (const candidate of fx.frames) {
+            frame = candidate;
+            elapsedFrameTime += Number(candidate.durationMs || fx.frameDurationMs || 50);
+            if (frameTime < elapsedFrameTime) break;
+          }
+          const ctx = fx.ctx;
+          ctx.clearRect(0, 0, targetWidth, targetHeight);
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, Math.min(1, fx.opacity * fadeAlpha));
+          const frameWidth = Number(frame.w || frame.width || fx.image.width);
+          const frameHeight = Number(frame.h || frame.height || fx.image.height);
+          const frameX = Number(frame.x || 0);
+          const frameY = Number(frame.y || 0);
+          const drawScale = Math.min(targetWidth / frameWidth, targetHeight / frameHeight) * (fx.drawScale || 1);
+          const drawWidth = frameWidth * drawScale;
+          const drawHeight = frameHeight * drawScale;
+          const pixelScaleX = targetWidth / Math.max(1, fx.canvasSizeCache.width || targetWidth);
+          const pixelScaleY = targetHeight / Math.max(1, fx.canvasSizeCache.height || targetHeight);
+          const drawX = (targetWidth - drawWidth) / 2 + fx.offsetX * pixelScaleX;
+          const drawY = (targetHeight - drawHeight) / 2 + fx.offsetY * pixelScaleY;
+          ctx.drawImage(fx.image, frameX, frameY, frameWidth, frameHeight, drawX, drawY, drawWidth, drawHeight);
+          ctx.restore();
+          if (!fx.hasRendered) {
+            fx.hasRendered = true;
+            logThorFx("Sprite score FX entered render frame", {
+              canvasClass: fx.canvas.className,
+              width: targetWidth,
+              height: targetHeight,
+              opacity: fx.opacity,
+            });
+          }
+          continue;
+        }
         fx.animationState.update(elapsed);
         fx.animationState.apply(fx.skeleton);
         fx.hiddenSlotNames.forEach((slotName) => {
@@ -1805,6 +1886,40 @@ function shouldCreateThorScoreBackFx(point) {
       return Number.isFinite(strikeNumber) && strikeNumber > 0 && strikeNumber <= maxStrike;
     }
 
+function shouldUseThorScoreSpriteFx(strikeNumber) {
+      const spriteConfig = thorIntroFxConfig?.scoreSpriteFx;
+      if (!spriteConfig || spriteConfig.enabled === false) return false;
+      const strikes = Array.isArray(spriteConfig.strikes) ? spriteConfig.strikes : [];
+      return strikes.some((strike) => Number(strike) === strikeNumber);
+    }
+
+function createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig = {}) {
+      const ctx = canvas.getContext("2d");
+      if (!ctx || !spriteData?.image || !spriteData.frames?.length) return null;
+      const metadata = spriteData.metadata || {};
+      const sourceDurationMs = Math.max(1, Number(metadata.durationMs || 0)
+        || spriteData.frames.reduce((sum, frame) => sum + Number(frame.durationMs || metadata.uniformFrameDurationMs || 50), 0));
+      return {
+        type: "sprite",
+        canvas,
+        ctx,
+        image: spriteData.image,
+        frames: spriteData.frames,
+        durationMs: Math.max(120, Number(spriteConfig.durationMs || thorIntroFxConfig.scoreLoopDurationMs || sourceDurationMs)),
+        fadeOutMs: Math.max(0, Number(spriteConfig.fadeOutMs ?? thorIntroFxConfig.scoreLoopFadeOutMs ?? 0)),
+        frameDurationMs: Math.max(1, Number(metadata.uniformFrameDurationMs || 50)),
+        sourceDurationMs,
+        opacity: Number(spriteConfig.opacity ?? 1),
+        loop: spriteConfig.loop !== false,
+        drawScale: Math.max(.1, Number(spriteConfig.drawScale || 1)),
+        offsetX: Number(spriteConfig.offsetX || 0),
+        offsetY: Number(spriteConfig.offsetY || 0),
+        canvasSizeCache: { width: 0, height: 0, checkedAt: 0 },
+        startedAt: performance.now(),
+        dispose() {},
+      };
+    }
+
 function createThorScoreBackFx(point, runId) {
       const strikeNumber = Number(point.configuredStrikeNumber);
       if (!shouldCreateThorScoreBackFx(point)) {
@@ -1823,15 +1938,18 @@ function createThorScoreBackFx(point, runId) {
       const scoreY = Number(point.scoreY ?? point.y);
       const strong = isStrongLightningPoint(point);
       const screenOffsetY = Number(thorIntroFxConfig.scoreLoopScreenOffsetY || 0);
+      const spriteConfig = thorIntroFxConfig.scoreSpriteFx || {};
+      const useSpriteFx = shouldUseThorScoreSpriteFx(strikeNumber);
       const scorePoint = {
         x: Number.isFinite(scoreX) ? scoreX : 50,
         y: Number.isFinite(scoreY) ? scoreY - (strong ? 6.5 : 5.5) + screenOffsetY : 50,
       };
       const canvas = document.createElement("canvas");
       canvas.className = "thor-score-back-fx";
+      if (useSpriteFx) canvas.classList.add("is-sprite-fx");
       setPoint(canvas, scorePoint);
-      canvas.style.setProperty("--score-fx-width", `${Number(thorIntroFxConfig.scoreLoopWidth || 230)}px`);
-      canvas.style.setProperty("--score-fx-height", `${Number(thorIntroFxConfig.scoreLoopHeight || 150)}px`);
+      canvas.style.setProperty("--score-fx-width", `${Number((useSpriteFx ? spriteConfig.width : null) || thorIntroFxConfig.scoreLoopWidth || 230)}px`);
+      canvas.style.setProperty("--score-fx-height", `${Number((useSpriteFx ? spriteConfig.height : null) || thorIntroFxConfig.scoreLoopHeight || 150)}px`);
       scoreGatherLayer.append(canvas);
       logThorFx("準備建立分數襯底FX", {
         strikeNumber,
@@ -1839,6 +1957,24 @@ function createThorScoreBackFx(point, runId) {
         scorePoint,
         canvasClass: canvas.className,
       });
+
+      if (useSpriteFx) {
+        void loadThorScoreSpriteFxData(spriteConfig).then((spriteData) => {
+          if (!spriteData || runId !== sequenceId || !canvas.isConnected) {
+            canvas.remove();
+            return;
+          }
+          const fxRuntime = createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig);
+          if (!fxRuntime || runId !== sequenceId || !canvas.isConnected) {
+            disposeThorScoreBackFx(fxRuntime);
+            canvas.remove();
+            return;
+          }
+          activeThorScoreBackFx.push(fxRuntime);
+          startThorScoreBackFxRenderer();
+        });
+        return;
+      }
 
       void loadThorIntroFxData().then((data) => {
         if (!data || runId !== sequenceId || !canvas.isConnected) {
