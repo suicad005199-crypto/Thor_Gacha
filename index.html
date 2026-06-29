@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>捕魚機中王表演流程 - 純數字滾動版</title>
-  <link rel="stylesheet" href="styles/gotcha-performance.css?v=20260623-thor-spine-loop-112">
+  <link rel="stylesheet" href="styles/gotcha-performance.css?v=20260623-thor-spine-loop-113">
 </head>
 <body>
   <main class="machine">
@@ -30,11 +30,17 @@
       <div class="toolbar-row main-control-grid">
         <label>
           <span>獎金</span>
-          <input id="prizeInput" value="12800" inputmode="numeric" maxlength="8" aria-label="獎金數字">
+          <input id="prizeInput" value="12800" inputmode="decimal" maxlength="11" aria-label="獎金數字">
+        </label>
+        <label class="compact-control currency-control">
+          <span>幣別</span>
+          <select id="currencySelect" aria-label="幣別">
+            <option value="TWD">TWD</option>
+          </select>
         </label>
         <label class="compact-control bet-control">
           <span>BET</span>
-          <input id="betInput" value="" inputmode="decimal" maxlength="10" aria-label="BET">
+          <select id="betInput" aria-label="BET"></select>
         </label>
         <label class="compact-control odd-control">
           <span>實際ODD</span>
@@ -86,6 +92,6 @@
   <script src="Fish_20201_GachaIn_FX.data.js?v=20260623-thor-spine-loop-106"></script>
   <script src="Fish_20201_Spawn_FX.data.js?v=20260623-thor-spine-loop-106"></script>
   <script src="scripts/gotcha-config.js?v=20260623-thor-spine-loop-113"></script>
-  <script src="scripts/gotcha-performance.js?v=20260623-thor-spine-loop-111"></script>
+  <script src="scripts/gotcha-performance.js?v=20260623-thor-spine-loop-112"></script>
 </body>
 </html>

@@ -24,6 +24,7 @@ const bubbleCtx = bubbleCanvas.getContext("2d");
 const scoreGatherLayer = document.querySelector("#scoreGatherLayer");
 const prizeRow = document.querySelector("#prizeRow");
 const prizeInput = document.querySelector("#prizeInput");
+const currencySelect = document.querySelector("#currencySelect");
 const betInput = document.querySelector("#betInput");
 const oddInput = document.querySelector("#oddInput");
 const thorLogBox = document.querySelector("#thorLogBox");
@@ -95,6 +96,56 @@ let activeThorSpawnRun = false;
 let musicEnabled = true;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const scoreDecimalPlaces = 2;
+const scoreDecimalUnit = 10 ** scoreDecimalPlaces;
+const minimumScoreUnits = 1;
+
+function scoreUnits(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.max(0, Math.round(number * scoreDecimalUnit)) : 0;
+}
+
+function scoreTextFromUnits(units) {
+  const safeUnits = Math.max(0, Math.round(Number(units) || 0));
+  const value = safeUnits / scoreDecimalUnit;
+  return value.toFixed(scoreDecimalPlaces).replace(/\.?0+$/, "");
+}
+
+function normalizeScoreText(value) {
+  return scoreTextFromUnits(scoreUnits(value));
+}
+
+const currencyBetOptions = {
+  TWD: [1, 3, 5, 7, 10, 15, 20, 30, 40, 50, 75, 100, 150, 200, 300, 400, 500, 600, 800, 1000],
+};
+
+function formatBetOptionValue(value) {
+  return Number.isInteger(value) ? String(value) : String(value);
+}
+
+function populateBetOptions(currencyCode = currencySelect?.value || "TWD") {
+  if (!betInput) return;
+
+  const selectedValue = betInput.value;
+  const betOptions = currencyBetOptions[currencyCode] || [];
+  betInput.replaceChildren();
+
+  const emptyOption = document.createElement("option");
+  emptyOption.value = "";
+  emptyOption.textContent = "BET";
+  betInput.append(emptyOption);
+
+  betOptions.forEach((value) => {
+    const option = document.createElement("option");
+    option.value = formatBetOptionValue(value);
+    option.textContent = formatBetOptionValue(value);
+    betInput.append(option);
+  });
+
+  betInput.value = betOptions.some((value) => formatBetOptionValue(value) === selectedValue)
+    ? selectedValue
+    : "";
+}
 
 function updateAppViewportHeight() {
   const viewportHeight = window.visualViewport?.height
@@ -3307,7 +3358,7 @@ function buildMermaidBubblePoints(settings) {
     }
 
 function lightningScoreValue(point) {
-      const value = Number(String(point.text || point.score || "").replace(/\D/g, ""));
+      const value = Number(String(point.text || point.score || "").replace(/[^\d.]/g, ""));
       return Number.isFinite(value) ? value : 0;
     }
 
@@ -3376,13 +3427,13 @@ function lightningScoreByStrikeNumber(strikeNumber) {
     }
 
 function lightningScoreElementValue(score) {
-      const value = Number(score?.dataset?.scoreValue || String(score?.dataset?.text || "").replace(/\D/g, ""));
+      const value = Number(score?.dataset?.scoreValue || String(score?.dataset?.text || "").replace(/[^\d.]/g, ""));
       return Number.isFinite(value) ? value : 0;
     }
 
 function setLightningScoreValue(score, value, scaleMultiplier = null) {
       if (!score) return;
-      const text = String(Math.max(0, Math.round(value)));
+      const text = normalizeScoreText(value);
       const scale = scaleMultiplier !== null && Number.isFinite(Number(scaleMultiplier))
         ? Number(scaleMultiplier)
         : Number(score.dataset.textScale || .6);
@@ -3437,7 +3488,7 @@ function rollLightningScoreValue(score, fromValue, toValue, durationMs, runId, s
         const startedAt = performance.now();
         const start = Number(fromValue) || 0;
         const target = Number(toValue) || 0;
-        const step = Math.abs(target - start) >= 100 ? 10 : 1;
+        const step = Math.abs(target - start) >= 100 ? 10 : .01;
 
         function tick(now) {
           if (runId !== sequenceId || !score.isConnected) {
@@ -3465,7 +3516,7 @@ function rollLightningScoreValue(score, fromValue, toValue, durationMs, runId, s
 function playThorBonusBoostRoll(point, runId) {
       if (activeCharacterKey !== "god10101" || activeCharacter.legacyLightning || runId !== sequenceId) return;
       const targetStrikeNumber = Number(point.bonusBoostTargetStrike);
-      const boostAmount = Math.max(0, Math.round(Number(point.bonusBoostAmount) || 0));
+      const boostAmount = Number(normalizeScoreText(point.bonusBoostAmount));
       if (!Number.isFinite(targetStrikeNumber) || boostAmount <= 0) return;
 
       const targetScore = lightningScoreByStrikeNumber(targetStrikeNumber);
@@ -3719,8 +3770,7 @@ function applyCharacterSetup() {
     }
 
 function cleanPrize(value) {
-      const digits = String(value).replace(/\D/g, "").slice(0, 8);
-      return digits || "0";
+      return cleanDecimalInput(value, 8, scoreDecimalPlaces) || "0";
     }
 
 function cleanDecimalInput(value, integerLimit = 8, decimalLimit = 3) {
@@ -3746,7 +3796,7 @@ function computedPrizeFromBetOdd() {
       const bet = readPositiveInputValue(betInput);
       const odd = readPositiveInputValue(oddInput);
       if (bet === null || odd === null) return null;
-      return cleanPrize(String(Math.max(0, Math.round(bet * odd))));
+      return normalizeScoreText(Math.max(0, bet * odd));
     }
 
 function syncPrizeFromBetOdd() {
@@ -3801,7 +3851,7 @@ function resolveRunTotals() {
       let prize = computedPrizeFromBetOdd();
 
       if (prize === null) {
-        prize = cleanPrize(prizeInput.value);
+        prize = normalizeScoreText(cleanPrize(prizeInput.value));
       }
 
       prizeInput.value = prize;
@@ -3836,11 +3886,22 @@ function resolveRunTotals() {
 
       slot.dataset.value = digit;
       slot.setAttribute("aria-label", digit);
-      glyphNode.style.width = `${glyph.width * scale}px`;
-      glyphNode.style.height = `${glyph.height * scale}px`;
-      glyphNode.style.backgroundImage = `url("${bitmapFont.image}")`;
-      glyphNode.style.backgroundSize = `${bitmapFont.width * scale}px ${bitmapFont.height * scale}px`;
-      glyphNode.style.backgroundPosition = `${-glyph.x * scale}px ${-glyph.y * scale}px`;
+      glyphNode.classList.toggle("is-text-glyph", !bitmapFont.chars[digit]);
+      if (bitmapFont.chars[digit]) {
+        glyphNode.textContent = "";
+        glyphNode.style.width = `${glyph.width * scale}px`;
+        glyphNode.style.height = `${glyph.height * scale}px`;
+        glyphNode.style.backgroundImage = `url("${bitmapFont.image}")`;
+        glyphNode.style.backgroundSize = `${bitmapFont.width * scale}px ${bitmapFont.height * scale}px`;
+        glyphNode.style.backgroundPosition = `${-glyph.x * scale}px ${-glyph.y * scale}px`;
+      } else {
+        glyphNode.textContent = digit;
+        glyphNode.style.width = `${28 * scale}px`;
+        glyphNode.style.height = `${glyph.height * scale}px`;
+        glyphNode.style.backgroundImage = "none";
+        glyphNode.style.backgroundSize = "";
+        glyphNode.style.backgroundPosition = "";
+      }
     }
 
     function openingTextValue(text) {
@@ -4341,20 +4402,27 @@ function resolveRunTotals() {
     }
 
     function calculateThorSplitScores(totalWin, splitCount) {
-      const targetTotal = Math.max(0, Math.round(Number(totalWin) || 0));
+      const targetUnits = scoreUnits(totalWin);
       const normalizedSplitCount = normalizeThorSplitCount(splitCount) || 6;
       const weights = thorWeightsForSplitCount(normalizedSplitCount);
-      const scores = [];
-      let frontScoreTotal = 0;
+      const scoreUnitParts = [];
+      let frontScoreUnits = 0;
+      let remainingUnits = targetUnits;
 
       for (let index = 0; index < normalizedSplitCount - 1; index += 1) {
-        const score = Math.floor(targetTotal * (weights[index] || 0));
-        scores.push(score);
-        frontScoreTotal += score;
+        const remainingSlots = normalizedSplitCount - index - 1;
+        const maxUnitsForCurrent = remainingUnits - remainingSlots * minimumScoreUnits;
+        const weightedUnits = Math.floor(targetUnits * (weights[index] || 0));
+        const scoreUnitsPart = maxUnitsForCurrent >= minimumScoreUnits
+          ? Math.min(Math.max(minimumScoreUnits, weightedUnits), maxUnitsForCurrent)
+          : Math.max(0, maxUnitsForCurrent);
+        scoreUnitParts.push(scoreUnitsPart);
+        frontScoreUnits += scoreUnitsPart;
+        remainingUnits -= scoreUnitsPart;
       }
 
-      scores.push(Math.max(0, targetTotal - frontScoreTotal));
-      return scores;
+      scoreUnitParts.push(Math.max(0, targetUnits - frontScoreUnits));
+      return scoreUnitParts.map((units) => Number(scoreTextFromUnits(units)));
     }
 
     function nonPauseStrikeByNumber(sourceStrikes, strikeNumber) {
@@ -4368,19 +4436,20 @@ function resolveRunTotals() {
     }
 
     function withdrawThorBoostPool(scores, amount) {
-      let remaining = Math.max(0, Math.round(amount));
+      let remainingUnits = scoreUnits(amount);
       const donorIndexes = [8, 7, 6];
 
       donorIndexes.forEach((index) => {
-        if (remaining <= 0) return;
+        if (remainingUnits <= 0) return;
         const floorValue = 100;
-        const available = Math.max(0, Number(scores[index] || 0) - floorValue);
-        const taken = Math.min(available, remaining);
-        scores[index] -= taken;
-        remaining -= taken;
+        const currentUnits = scoreUnits(scores[index]);
+        const availableUnits = Math.max(0, currentUnits - scoreUnits(floorValue));
+        const takenUnits = Math.min(availableUnits, remainingUnits);
+        scores[index] = Number(scoreTextFromUnits(currentUnits - takenUnits));
+        remainingUnits -= takenUnits;
       });
 
-      return Math.max(0, Math.round(amount) - remaining);
+      return Number(scoreTextFromUnits(scoreUnits(amount) - remainingUnits));
     }
 
     function createThorBonusBoostPlan(scores, sourceStrikes, totalWin, totalStrikeCount) {
@@ -4393,23 +4462,38 @@ function resolveRunTotals() {
         .slice(0, extraCount);
       if (!targetIndexes.length) return [];
 
-      const desiredPool = Math.max(extraCount * 100, Math.floor(Number(totalWin || 0) * (extraCount === 1 ? .045 : .075)));
+      const desiredPool = Number(scoreTextFromUnits(Math.max(
+        scoreUnits(extraCount * 100),
+        Math.floor(scoreUnits(totalWin) * (extraCount === 1 ? .045 : .075))
+      )));
       const donorTotal = scores.slice(6, 9).reduce((total, score) => total + Number(score || 0), 0);
-      const pool = withdrawThorBoostPool(scores, Math.min(desiredPool, Math.floor(donorTotal * .34)));
+      const pool = withdrawThorBoostPool(scores, Math.min(
+        desiredPool,
+        Number(scoreTextFromUnits(Math.floor(scoreUnits(donorTotal) * .34)))
+      ));
       if (pool <= 0) return [];
 
-      const boostAmounts = extraCount === 1
-        ? [pool]
-        : [Math.floor(pool * .45), pool - Math.floor(pool * .45)];
+      const poolUnits = scoreUnits(pool);
+      if (poolUnits < extraCount * minimumScoreUnits) return [];
+
+      const boostAmountUnits = extraCount === 1
+        ? [poolUnits]
+        : (() => {
+          const firstUnits = Math.min(
+            Math.max(minimumScoreUnits, Math.floor(poolUnits * .45)),
+            poolUnits - minimumScoreUnits
+          );
+          return [firstUnits, poolUnits - firstUnits];
+        })();
 
       return targetIndexes.map((targetIndex, index) => {
         const targetStrikeNumber = targetIndex + 1;
         const template = nonPauseStrikeByNumber(sourceStrikes, targetStrikeNumber) || {};
-        const boostAmount = Math.max(0, boostAmounts[index] || 0);
+        const boostAmount = Number(scoreTextFromUnits(boostAmountUnits[index] || 0));
 
         return {
           ...template,
-          text: String(boostAmount),
+          text: scoreTextFromUnits(scoreUnits(boostAmount)),
           configuredStrikeNumber: 10 + index,
           thorSplitCount: 9,
           bonusBoostTargetStrike: targetStrikeNumber,
@@ -4454,7 +4538,7 @@ function resolveRunTotals() {
 
         const plannedStrike = {
           ...strike,
-          text: String(scores[configuredStrikeNumber - 1] ?? 0),
+          text: scoreTextFromUnits(scoreUnits(scores[configuredStrikeNumber - 1] ?? 0)),
           configuredStrikeNumber,
           thorSplitCount: splitCount,
         };
@@ -4864,13 +4948,14 @@ function resolveRunTotals() {
     }
 
     async function showFinalScoreRolling(prize, runId) {
-      const targetScore = Number(prize);
+      const targetUnits = scoreUnits(prize);
+      const targetScoreText = scoreTextFromUnits(targetUnits);
       const rollDuration = 2400;
-      const rollStep = targetScore >= 100 ? 100 : 1;
-      const digitCount = prize.length;
+      const rollStepUnits = targetUnits >= scoreUnits(100) ? scoreUnits(100) : 1;
+      const digitCount = targetScoreText.length;
 
-      function paintScore(value, isFinal = false) {
-        const visibleText = String(value);
+      function paintScore(units, isFinal = false) {
+        const visibleText = isFinal ? targetScoreText : scoreTextFromUnits(units);
         const scoreText = visibleText.padStart(digitCount, "0").slice(-digitCount);
         const hiddenCount = Math.max(0, digitCount - visibleText.length);
 
@@ -4910,9 +4995,9 @@ function resolveRunTotals() {
 
           const progress = Math.min(1, (now - startTime) / rollDuration);
           const eased = 1 - Math.pow(1 - progress, 3);
-          const rawScore = Math.floor(targetScore * eased);
-          const rollingScore = progress >= 1 ? targetScore : Math.floor(rawScore / rollStep) * rollStep;
-          paintScore(Math.min(targetScore, rollingScore));
+          const rawUnits = Math.floor(targetUnits * eased);
+          const rollingUnits = progress >= 1 ? targetUnits : Math.floor(rawUnits / rollStepUnits) * rollStepUnits;
+          paintScore(Math.min(targetUnits, rollingUnits));
 
           if (progress < 1) {
             requestAnimationFrame(tick);
@@ -4925,7 +5010,7 @@ function resolveRunTotals() {
       });
 
       if (runId !== sequenceId) return;
-      paintScore(targetScore, true);
+      paintScore(targetUnits, true);
       await sleep(140);
       if (runId !== sequenceId) return;
     }
@@ -5489,8 +5574,13 @@ function resolveRunTotals() {
       updateThorLogBox(null);
     });
 
-    betInput?.addEventListener("input", () => {
-      betInput.value = cleanDecimalInput(betInput.value);
+    currencySelect?.addEventListener("change", () => {
+      populateBetOptions(currencySelect.value);
+      syncPrizeFromBetOdd();
+      updateThorLogBox(null);
+    });
+
+    betInput?.addEventListener("change", () => {
       syncPrizeFromBetOdd();
       updateThorLogBox(null);
     });
@@ -5563,6 +5653,7 @@ function resolveRunTotals() {
 
     void loadThorMobHitEffect();
     void loadThorIntroFxData();
+    populateBetOptions();
     startLightningRenderer();
     setActiveCharacter(activeCharacterKey);
     updateMusicToggleButton();
