@@ -1650,7 +1650,7 @@ function playThorIntroFx(durationMs, token, options = {}) {
             offsetY: fxConfig.openingOffsetY ?? data.offsetY,
             opacity: fxConfig.openingOpacity ?? data.opacity,
             scale: fxConfig.openingScale ?? data.scale,
-            useOwnView: true,
+            useOwnView: fxConfig.openingUseOwnView ?? true,
             viewPadding: fxConfig.openingViewPadding ?? 1.16,
           }
           : { label: "intro FX" };
