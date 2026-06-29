@@ -115,19 +115,187 @@ function normalizeScoreText(value) {
   return scoreTextFromUnits(scoreUnits(value));
 }
 
-const currencyBetOptions = {
-  TWD: [1, 3, 5, 7, 10, 15, 20, 30, 40, 50, 75, 100, 150, 200, 300, 400, 500, 600, 800, 1000],
-};
+const defaultCurrencyCode = "TWD";
+const betOptionMultipliers = [1, 3, 5, 7, 10, 15, 20, 30, 40, 50, 75, 100, 150, 200, 300, 400, 500, 600, 800, 1000];
+const currencyBetBases = [
+  { code: "CNY", baseBet: 0.04 },
+  { code: "HKD", baseBet: 0.2 },
+  { code: "TRY", baseBet: 0.2 },
+  { code: "TWD", baseBet: 1 },
+  { code: "THB", baseBet: 1 },
+  { code: "PHP", baseBet: 0.1 },
+  { code: "JPY", baseBet: 4 },
+  { code: "BND", baseBet: 0.2 },
+  { code: "SGD", baseBet: 0.2 },
+  { code: "USD", baseBet: 0.04 },
+  { code: "GBP", baseBet: 0.2 },
+  { code: "EUR", baseBet: 0.04 },
+  { code: "MYR", baseBet: 0.1 },
+  { code: "KRW", baseBet: 40 },
+  { code: "IDR", baseBet: 400 },
+  { code: "VND", baseBet: 100 },
+  { code: "INR", baseBet: 2 },
+  { code: "KHR", baseBet: 125 },
+  { code: "MMK", baseBet: 40 },
+  { code: "LAK", baseBet: 250 },
+  { code: "CAD", baseBet: 0.2 },
+  { code: "\u865b\u64ec", baseBet: 10 },
+  { code: "kVND", baseBet: 0.1 },
+  { code: "kIDR", baseBet: 0.4 },
+  { code: "AUD", baseBet: 0.04 },
+  { code: "UAH", baseBet: 0.8 },
+  { code: "NOK", baseBet: 0.4 },
+  { code: "SEK", baseBet: 0.4 },
+  { code: "ZAR", baseBet: 0.4 },
+  { code: "BDT", baseBet: 2 },
+  { code: "LKR", baseBet: 5 },
+  { code: "RUB", baseBet: 2 },
+  { code: "PKR", baseBet: 2 },
+  { code: "PLN", baseBet: 0.2 },
+  { code: "AED", baseBet: 0.2 },
+  { code: "BRL", baseBet: 0.1 },
+  { code: "CHF", baseBet: 0.2 },
+  { code: "NZD", baseBet: 0.2 },
+  { code: "HUF", baseBet: 8 },
+  { code: "DKK", baseBet: 0.2 },
+  { code: "ALL", baseBet: 3.2 },
+  { code: "AMD", baseBet: 16 },
+  { code: "ARS", baseBet: 0.2 },
+  { code: "AZN", baseBet: 0.2 },
+  { code: "BAM", baseBet: 0.2 },
+  { code: "BGN", baseBet: 0.2 },
+  { code: "BMD", baseBet: 0.2 },
+  { code: "BYN", baseBet: 0.2 },
+  { code: "CDF", baseBet: 50 },
+  { code: "CLP", baseBet: 20 },
+  { code: "COP", baseBet: 100 },
+  { code: "CZK", baseBet: 0.4 },
+  { code: "GEL", baseBet: 0.2 },
+  { code: "GHS", baseBet: 0.2 },
+  { code: "HRK", baseBet: 0.2 },
+  { code: "ILS", baseBet: 0.2 },
+  { code: "IQD", baseBet: 40 },
+  { code: "IRR", baseBet: 1000 },
+  { code: "ISK", baseBet: 4 },
+  { code: "KES", baseBet: 3.2 },
+  { code: "KGS", baseBet: 2 },
+  { code: "KWD", baseBet: 0.2 },
+  { code: "KZT", baseBet: 10 },
+  { code: "MDL", baseBet: 0.4 },
+  { code: "MKD", baseBet: 2 },
+  { code: "MNT", baseBet: 80 },
+  { code: "MXN", baseBet: 0.4 },
+  { code: "NAD", baseBet: 0.4 },
+  { code: "NGN", baseBet: 10 },
+  { code: "PEN", baseBet: 0.2 },
+  { code: "PYG", baseBet: 200 },
+  { code: "RON", baseBet: 0.2 },
+  { code: "SAR", baseBet: 0.2 },
+  { code: "TMT", baseBet: 0.2 },
+  { code: "TND", baseBet: 0.2 },
+  { code: "TZS", baseBet: 50 },
+  { code: "UGX", baseBet: 100 },
+  { code: "UYU", baseBet: 1 },
+  { code: "UZS", baseBet: 250 },
+  { code: "XAF", baseBet: 16 },
+  { code: "XOF", baseBet: 16 },
+  { code: "ZMW", baseBet: 0.4 },
+  { code: "mBCH", baseBet: 0.2 },
+  { code: "mBTC", baseBet: 0.2 },
+  { code: "uBTC", baseBet: 3.2 },
+  { code: "DOGE", baseBet: 4 },
+  { code: "mETH", baseBet: 0.2 },
+  { code: "mLTC", baseBet: 0.4 },
+  { code: "USDT", baseBet: 0.2 },
+  { code: "kMMK", baseBet: 0.2 },
+  { code: "kKHR", baseBet: 0.2 },
+  { code: "kLAK", baseBet: 0.2 },
+  { code: "AFCoin", baseBet: 2000 },
+  { code: "kIRR", baseBet: 1 },
+  { code: "LBP", baseBet: 40 },
+  { code: "uETH", baseBet: 10 },
+  { code: "USDC", baseBet: 0.2 },
+  { code: "XRP", baseBet: 0.2 },
+  { code: "mXMR", baseBet: 0.2 },
+  { code: "hTWD", baseBet: 100 },
+  { code: "LYD", baseBet: 0.2 },
+  { code: "ETB", baseBet: 1.6 },
+  { code: "DLB", baseBet: 2 },
+  { code: "DOP", baseBet: 1.6 },
+  { code: "MOP", baseBet: 0.2 },
+  { code: "MAD", baseBet: 0.2 },
+  { code: "BOB", baseBet: 0.2 },
+  { code: "VEF", baseBet: 2000 },
+  { code: "LRD", baseBet: 5 },
+  { code: "BZD", baseBet: 0.2 },
+  { code: "DZD", baseBet: 4 },
+  { code: "VES", baseBet: 0.2 },
+  { code: "\u865b\u64ec2", baseBet: 2000 },
+  { code: "\u865b\u64ec3", baseBet: 100 },
+  { code: "SLL", baseBet: 400 },
+  { code: "SLE", baseBet: 0.4 },
+  { code: "NPR", baseBet: 4 },
+  { code: "\u865b\u64ec4", baseBet: 125 },
+  { code: "NIO", baseBet: 1 },
+  { code: "TWD130", baseBet: 125 },
+  { code: "ETBB", baseBet: 1.6 },
+  { code: "TWD200", baseBet: 200 },
+  { code: "KMY", baseBet: 10 },
+  { code: "hMYR", baseBet: 10 },
+  { code: "EGP", baseBet: 1 },
+  { code: "OMR", baseBet: 0.2 },
+  { code: "MVR", baseBet: 0.4 },
+  { code: "MZN", baseBet: 2 },
+  { code: "SRD", baseBet: 0.8 },
+  { code: "LSL", baseBet: 0.4 },
+  { code: "kUZS", baseBet: 0.2 },
+  { code: "mMYR", baseBet: 100 },
+  { code: "PGK", baseBet: 0.2 },
+  { code: "AOA", baseBet: 25 },
+  { code: "TJS", baseBet: 0.2 },
+  { code: "BHD", baseBet: 0.2 },
+  { code: "hINR", baseBet: 250 },
+  { code: "hJPY", baseBet: 400 },
+  { code: "XCUSD", baseBet: 400 },
+  { code: "cIDR", baseBet: 4 },
+  { code: "MMKB", baseBet: 20 },
+  { code: "INR500", baseBet: 1000 },
+  { code: "SSP", baseBet: 100 },
+  { code: "mINR", baseBet: 2000 },
+  { code: "SCR", baseBet: 0.4 },
+];
+const currencyBetBaseMap = new Map(currencyBetBases.map(({ code, baseBet }) => [code, baseBet]));
 
 function formatBetOptionValue(value) {
-  return Number.isInteger(value) ? String(value) : String(value);
+  return normalizeScoreText(value);
 }
 
-function populateBetOptions(currencyCode = currencySelect?.value || "TWD") {
+function buildBetOptions(currencyCode) {
+  const baseBet = currencyBetBaseMap.get(currencyCode) ?? currencyBetBaseMap.get(defaultCurrencyCode);
+  return betOptionMultipliers.map((multiplier) => formatBetOptionValue(baseBet * multiplier));
+}
+
+function populateCurrencyOptions() {
+  if (!currencySelect) return;
+
+  const selectedValue = currencySelect.value || defaultCurrencyCode;
+  currencySelect.replaceChildren();
+
+  currencyBetBases.forEach(({ code }) => {
+    const option = document.createElement("option");
+    option.value = code;
+    option.textContent = code;
+    currencySelect.append(option);
+  });
+
+  currencySelect.value = currencyBetBaseMap.has(selectedValue) ? selectedValue : defaultCurrencyCode;
+}
+
+function populateBetOptions(currencyCode = currencySelect?.value || defaultCurrencyCode) {
   if (!betInput) return;
 
   const selectedValue = betInput.value;
-  const betOptions = currencyBetOptions[currencyCode] || [];
+  const betOptions = buildBetOptions(currencyCode);
   betInput.replaceChildren();
 
   const emptyOption = document.createElement("option");
@@ -137,12 +305,12 @@ function populateBetOptions(currencyCode = currencySelect?.value || "TWD") {
 
   betOptions.forEach((value) => {
     const option = document.createElement("option");
-    option.value = formatBetOptionValue(value);
-    option.textContent = formatBetOptionValue(value);
+    option.value = value;
+    option.textContent = value;
     betInput.append(option);
   });
 
-  betInput.value = betOptions.some((value) => formatBetOptionValue(value) === selectedValue)
+  betInput.value = betOptions.includes(selectedValue)
     ? selectedValue
     : "";
 }
@@ -5653,6 +5821,7 @@ function resolveRunTotals() {
 
     void loadThorMobHitEffect();
     void loadThorIntroFxData();
+    populateCurrencyOptions();
     populateBetOptions();
     startLightningRenderer();
     setActiveCharacter(activeCharacterKey);
