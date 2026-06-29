@@ -1597,6 +1597,9 @@ function playThorIntroFx(durationMs, token, options = {}) {
         }
 
         const isOpeningFx = options.mode === "opening";
+        const fxDurationMs = isOpeningFx && Number.isFinite(Number(fxConfig.openingDurationMs))
+          ? Math.max(120, Number(fxConfig.openingDurationMs))
+          : durationMs;
         const runtimeOptions = isOpeningFx
           ? {
             label: "intro FX",
@@ -1611,7 +1614,7 @@ function playThorIntroFx(durationMs, token, options = {}) {
           : { label: "intro FX" };
         let fxRuntime = null;
         try {
-          fxRuntime = createThorIntroFxRuntime(data, durationMs, runtimeOptions);
+          fxRuntime = createThorIntroFxRuntime(data, fxDurationMs, runtimeOptions);
         } catch (error) {
           warnThorFx("Intro FX runtime failed", error);
         }
@@ -1626,6 +1629,7 @@ function playThorIntroFx(durationMs, token, options = {}) {
 
         disposeThorIntroFx();
         activeThorIntroFx = fxRuntime;
+        fxRuntime.canvas.style.display = "block";
         logThorFx("Intro FX started", {
           animationName: fxRuntime.animationName,
           durationMs: fxRuntime.durationMs,
@@ -5626,10 +5630,10 @@ function resolveRunTotals() {
             && Number.isFinite(Number(afterimageSettings.endBeforeThorEntranceNextMs))
           );
           playBossSpineIntroOnce({
-            forceFx: Boolean(entrance.playFx),
+            forceFx: false,
             fxMode: "opening",
             introFxConfig: entranceIntroFxConfig,
-            playFx: Boolean(entrance.playFx),
+            playFx: false,
             playLoopFade: false,
             playSound: false,
             useHeightMatch: false,
@@ -5639,6 +5643,13 @@ function resolveRunTotals() {
           });
           const introToken = activeBossSpine.runtime.introToken;
           stage.classList.add("stage--landed");
+          if (entrance.playFx !== false && entranceIntroFxConfig?.enabled !== false) {
+            playThorIntroFx(entranceIntroFxConfig.openingDurationMs || totalMs || 720, introToken, {
+              fxConfig: entranceIntroFxConfig,
+              force: true,
+              mode: "opening",
+            });
+          }
           scheduleThorIntroMobHitFx(entrance.introMobHitFx, runId);
           if (entrance.playSound !== false) {
             playThorSpawnSound();
