@@ -335,17 +335,17 @@ function updateAppViewportHeight() {
 updateAppViewportHeight();
 
 const thorSplitWeightTable = {
-  6: [.08, .1, .12, .14, .18, .38],
-  7: [.07, .08, .1, .12, .14, .19, .3],
-  8: [.06, .07, .08, .1, .12, .17, .18, .22],
-  9: [.05, .06, .07, .08, .1, .14, .15, .17, .18],
+  6: [.08, .1, .12, .14, .18],
+  7: [.07, .08, .1, .12, .14, .19],
+  8: [.06, .07, .08, .1, .12, .17, .18],
+  9: [.05, .06, .07, .08, .1, .14, .15, .17],
 };
 
 const thorOddSplitRules = [
-  { min: 200, max: 500, label: "200~500x", splitCount: 6 },
-  { min: 501, max: 1000, label: "501~1000x", splitCount: 7 },
-  { min: 1001, max: 1500, label: "1001~1500x", splitCount: 8 },
-  { min: 1501, max: 2200, label: "1501~2200x", splitCount: 9 },
+  { min: 200, max: 1000, label: "A 200~1000x", splitCount: 6 },
+  { min: 1600, max: 1899, label: "B 1600~1899x", splitCount: 7 },
+  { min: 1900, max: 2099, label: "B 1900~2099x", splitCount: 8 },
+  { min: 2100, max: 2200, label: "B 2100~2200x", splitCount: 9 },
 ];
 
 const lightningTonePalettes = {
@@ -4606,7 +4606,7 @@ function resolveRunTotals() {
       const weights = thorSplitWeightTable[splitCount] || thorSplitWeightTable[6];
       const baseWeights = shuffleArray(weights.slice(0, Math.min(6, weights.length)));
       const bonusWeights = weights.slice(6);
-      return [...baseWeights, ...bonusWeights].slice(0, splitCount);
+      return [...baseWeights, ...bonusWeights].slice(0, Math.max(0, splitCount - 1));
     }
 
     function calculateThorSplitScores(totalWin, splitCount) {
