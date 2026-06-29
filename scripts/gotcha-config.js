@@ -288,7 +288,7 @@ window.GotchaPerformanceConfig = {
         fadeOutMs: 1600,
         opacity: .95,
         loop: true,
-        offsetY: 52,
+        offsetY: 74,
         width: 360,
         height: 205,
       },
