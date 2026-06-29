@@ -84,7 +84,7 @@ window.GotchaPerformanceConfig = {
         { x: 74, y: 82, scoreX: 74, scoreY: 75.5, text: "1680", delay: 120, hold: 420, strong: true, localFlash: true, noJitter: true, textScale: .62 },
         { pause: 260 },
         { x: 38, y: 68, scoreX: 38, scoreY: 62.5, text: "2460", delay: 120, hold: 470, optionalChance: .55, noJitter: true, textScale: .6 },
-        { x: 66, y: 66, scoreX: 63, scoreY: 62.5, text: "3280", delay: 110, hold: 450, optionalChance: .45, noJitter: true, textScale: .6 },
+        { x: 66, y: 66, scoreX: 60, scoreY: 64.5, text: "3280", delay: 110, hold: 450, optionalChance: .45, noJitter: true, textScale: .6 },
         { x: 52, y: 87, scoreX: 52, scoreY: 80.5, text: "4760", delay: 130, hold: 300, optionalChance: .35, strong: true, noJitter: true, textScale: .64 },
       ],
       lightningAfterHold: 820,
