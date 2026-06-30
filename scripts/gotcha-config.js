@@ -81,7 +81,7 @@ window.GotchaPerformanceConfig = {
           durationMs: 850,
           flashDelayMs: 420,
           entrySpriteFx: {
-            enabled: true,
+            enabled: false,
             metadata: "assets/thor/effects/lightning/lightning_entry_spritesheet.json",
             image: "assets/thor/effects/lightning/lightning_entry_spritesheet.png",
             durationMs: 200,
