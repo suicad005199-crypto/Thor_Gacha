@@ -320,8 +320,8 @@ window.GotchaPerformanceConfig = {
         loop: true,
         width: 280,
         height: 430,
-        anchorY: -132,
-        scale: 1.65,
+        anchorY: -165,
+        scale: 2.5,
       },
       hiddenSlots: [
         "images/Light_02",
