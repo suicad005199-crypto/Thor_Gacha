@@ -2111,6 +2111,58 @@ function createThorStrikeSpriteFx(point, runId) {
       return true;
     }
 
+function createThorEntrySpriteFx(point, spriteConfig, runId) {
+      if (!spriteConfig?.metadata || runId !== sequenceId) return;
+
+      const canvas = document.createElement("canvas");
+      canvas.className = "thor-entry-sprite-fx is-sprite-fx";
+      setPoint(canvas, point);
+      canvas.style.setProperty("--entry-sprite-width", `${Number(spriteConfig.width || 220)}px`);
+      canvas.style.setProperty("--entry-sprite-height", `${Number(spriteConfig.height || 250)}px`);
+      canvas.style.setProperty("--entry-sprite-scale", Number(spriteConfig.scale || point.scale || 1));
+      if (Number.isFinite(Number(spriteConfig.zIndex))) {
+        canvas.style.zIndex = String(Number(spriteConfig.zIndex));
+      }
+      stage.append(canvas);
+
+      void loadThorScoreSpriteFxData(spriteConfig).then((spriteData) => {
+        if (!spriteData || runId !== sequenceId || !canvas.isConnected) {
+          canvas.remove();
+          return;
+        }
+        const fxRuntime = createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig);
+        if (!fxRuntime || runId !== sequenceId || !canvas.isConnected) {
+          disposeThorScoreBackFx(fxRuntime);
+          canvas.remove();
+          return;
+        }
+        activeThorScoreBackFx.push(fxRuntime);
+        startThorScoreBackFxRenderer();
+      });
+    }
+
+function scheduleThorPreludeEntrySpriteFx(settings = {}, runId = sequenceId) {
+      if (!settings || settings.enabled === false || !settings.metadata) return [];
+      const positions = Array.isArray(settings.positions) ? settings.positions : [];
+      if (!positions.length) return [];
+
+      void loadThorScoreSpriteFxData(settings);
+      return positions.map((point) => {
+        const delayMs = Math.max(0, Number(point.delayMs || 0));
+        return window.setTimeout(() => {
+          if (runId !== sequenceId) return;
+          createThorEntrySpriteFx(point, {
+            ...settings,
+            ...point,
+            positions: undefined,
+            durationMs: point.durationMs ?? settings.durationMs,
+            fadeOutMs: point.fadeOutMs ?? settings.fadeOutMs,
+            opacity: point.opacity ?? settings.opacity,
+          }, runId);
+        }, delayMs);
+      });
+    }
+
 async function startBossSpineCharacter(characterKey) {
       const loadId = bossSpineLoadId + 1;
       bossSpineLoadId = loadId;
@@ -5075,6 +5127,7 @@ function resolveRunTotals() {
       stage.classList.remove("stage--thor-prelude", "stage--thor-prelude-flash");
       void stage.offsetWidth;
       stage.classList.add("stage--thor-prelude");
+      const entrySpriteTimers = scheduleThorPreludeEntrySpriteFx(settings.entrySpriteFx, runId);
 
       const flashTimer = window.setTimeout(() => {
         if (runId === sequenceId) {
@@ -5084,6 +5137,7 @@ function resolveRunTotals() {
 
       await sleep(durationMs);
       window.clearTimeout(flashTimer);
+      entrySpriteTimers.forEach((timer) => window.clearTimeout(timer));
       stage.classList.remove("stage--thor-prelude", "stage--thor-prelude-flash");
     }
 

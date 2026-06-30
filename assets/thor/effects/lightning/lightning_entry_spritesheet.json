@@ -1,0 +1,111 @@
+{
+  "image": "lightning_entry_spritesheet.png",
+  "source": "lightning_entry_source.jpg",
+  "sourceUrl": "https://www.vectorstock.com/royalty-free-vector/electric-lightning-strike-vector-44931497",
+  "frameWidth": 320,
+  "frameHeight": 352,
+  "frameCount": 6,
+  "columns": 6,
+  "rows": 1,
+  "sheetWidth": 1920,
+  "sheetHeight": 352,
+  "uniformFrameDurationMs": 100,
+  "trimmed": false,
+  "sourceCrop": {
+    "x": 0,
+    "y": 0,
+    "w": 1000,
+    "h": 744
+  },
+  "backgroundRemoval": {
+    "method": "warm/yellow core matte with synthesized clean gold glow; VectorStock footer cropped; checker/black background removed",
+    "alphaThreshold": 4,
+    "sourceGrid": "3 columns x 2 rows"
+  },
+  "frames": [
+    {
+      "index": 0,
+      "x": 0,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 80,
+        "y": 26,
+        "w": 235,
+        "h": 332
+      },
+      "durationMs": 100
+    },
+    {
+      "index": 1,
+      "x": 320,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 359,
+        "y": 34,
+        "w": 251,
+        "h": 320
+      },
+      "durationMs": 100
+    },
+    {
+      "index": 2,
+      "x": 640,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 667,
+        "y": 34,
+        "w": 269,
+        "h": 317
+      },
+      "durationMs": 100
+    },
+    {
+      "index": 3,
+      "x": 960,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 82,
+        "y": 372,
+        "w": 235,
+        "h": 309
+      },
+      "durationMs": 100
+    },
+    {
+      "index": 4,
+      "x": 1280,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 383,
+        "y": 372,
+        "w": 217,
+        "h": 327
+      },
+      "durationMs": 100
+    },
+    {
+      "index": 5,
+      "x": 1600,
+      "y": 0,
+      "w": 320,
+      "h": 352,
+      "sourceBox": {
+        "x": 669,
+        "y": 372,
+        "w": 253,
+        "h": 324
+      },
+      "durationMs": 100
+    }
+  ]
+}

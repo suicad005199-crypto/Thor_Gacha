@@ -428,6 +428,26 @@
       animation: thorPreludeFlash 320ms ease-out both;
     }
 
+    .thor-entry-sprite-fx {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 13;
+      width: var(--entry-sprite-width, 220px);
+      height: var(--entry-sprite-height, 250px);
+      max-width: 26vw;
+      max-height: 30vw;
+      opacity: 1;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(var(--entry-sprite-scale, 1));
+      mix-blend-mode: screen;
+      filter:
+        brightness(1.1)
+        saturate(1.16)
+        drop-shadow(0 0 14px rgba(255, 220, 92, .35))
+        drop-shadow(0 0 24px rgba(94, 214, 255, .28));
+    }
+
     .stage[data-character="god10101"].stage--thor-energy-charge .hades-darkness {
       opacity: .36;
       background:
