@@ -1,0 +1,17 @@
+{
+  "image": "cloude_lightning.png",
+  "source": "cloude_lightning_source.png",
+  "sourceUrl": "https://www.vectorstock.com/royalty-free-vector/storm-clouds-with-lightning-vector-33216171",
+  "width": 464,
+  "height": 311,
+  "sourceCrop": {
+    "x": 0,
+    "y": 1,
+    "w": 464,
+    "h": 311
+  },
+  "backgroundRemoval": {
+    "method": "cloud brightness + blue lightning alpha matte from provided middle crop; 1px top clipboard border removed",
+    "alphaThreshold": 4
+  }
+}

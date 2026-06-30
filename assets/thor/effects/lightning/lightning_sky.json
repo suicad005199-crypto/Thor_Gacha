@@ -1,0 +1,19 @@
+{
+  "image": "lightning_sky.png",
+  "source": "lightning_sky_source.jpg",
+  "sourceUrl": "https://www.vectorstock.com/royalty-free-vector/stormy-blue-sky-frame-vector-51358912",
+  "width": 1000,
+  "height": 321,
+  "sourceWidth": 1000,
+  "sourceHeight": 474,
+  "sourceCrop": {
+    "x": 0,
+    "y": 0,
+    "w": 1000,
+    "h": 321
+  },
+  "backgroundRemoval": {
+    "method": "blue/brightness alpha matte; VectorStock footer cropped; black center/background removed",
+    "alphaThreshold": 4
+  }
+}
