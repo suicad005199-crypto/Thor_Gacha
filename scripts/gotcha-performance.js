@@ -2147,17 +2147,34 @@ function scheduleThorPreludeEntrySpriteFx(settings = {}, runId = sequenceId) {
       if (!positions.length) return [];
 
       void loadThorScoreSpriteFxData(settings);
-      return positions.map((point) => {
-        const delayMs = Math.max(0, Number(point.delayMs || 0));
+      const shouldRandomize = settings.randomize !== false;
+      const scheduledPositions = shouldRandomize ? shuffleArray(positions) : positions;
+      const startDelayMs = Math.max(0, Number(settings.startDelayMs || 0));
+      const gapMs = Math.max(0, Number(settings.gapMs || settings.durationMs || 0));
+      const jitterMs = Math.max(0, Number(settings.jitterMs || 0));
+      const jitterX = Math.max(0, Number(settings.jitterX || 0));
+      const jitterY = Math.max(0, Number(settings.jitterY || 0));
+
+      return scheduledPositions.map((point, index) => {
+        const delayMs = shouldRandomize
+          ? startDelayMs + index * gapMs + Math.random() * jitterMs
+          : Math.max(0, Number(point.delayMs || 0));
         return window.setTimeout(() => {
           if (runId !== sequenceId) return;
-          createThorEntrySpriteFx(point, {
+          const effectPoint = shouldRandomize
+            ? {
+              ...point,
+              x: clampNumber(Number(point.x) + (Math.random() * 2 - 1) * jitterX, 4, 96),
+              y: clampNumber(Number(point.y) + (Math.random() * 2 - 1) * jitterY, 6, 44),
+            }
+            : point;
+          createThorEntrySpriteFx(effectPoint, {
             ...settings,
-            ...point,
+            ...effectPoint,
             positions: undefined,
-            durationMs: point.durationMs ?? settings.durationMs,
-            fadeOutMs: point.fadeOutMs ?? settings.fadeOutMs,
-            opacity: point.opacity ?? settings.opacity,
+            durationMs: effectPoint.durationMs ?? settings.durationMs,
+            fadeOutMs: effectPoint.fadeOutMs ?? settings.fadeOutMs,
+            opacity: effectPoint.opacity ?? settings.opacity,
           }, runId);
         }, delayMs);
       });
