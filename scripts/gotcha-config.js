@@ -314,6 +314,13 @@ window.GotchaPerformanceConfig = {
         strikes: [9],
         metadata: "assets/thor/effects/lightning/lightning-orange_spritesheet.json",
         image: "assets/thor/effects/lightning/lightning-orange.png",
+        variants: [
+          {
+            strikes: [7, 8],
+            metadata: "assets/thor/effects/lightning/lightning-purple_spritesheet.json",
+            image: "assets/thor/effects/lightning/lightning-purple.png",
+          },
+        ],
         durationMs: 1200,
         fadeOutMs: 300,
         opacity: .96,
