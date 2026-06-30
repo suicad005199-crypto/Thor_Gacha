@@ -90,7 +90,7 @@ window.GotchaPerformanceConfig = {
             loop: false,
             width: 220,
             height: 250,
-            scale: 1.8,
+            scale: 3,
             randomize: true,
             startDelayMs: 60,
             gapMs: 260,
