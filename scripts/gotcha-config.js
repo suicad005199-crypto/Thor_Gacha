@@ -75,6 +75,23 @@ window.GotchaPerformanceConfig = {
         hitDuration: 680,
         timelineReleaseMs: 1150,
       },
+      cinematicFx: {
+        prelude: {
+          enabled: true,
+          durationMs: 720,
+          flashDelayMs: 340,
+        },
+        energyCharge: {
+          enabled: true,
+          triggerStrike: 7,
+          durationMs: 560,
+          soundRate: 1.35,
+        },
+        finalStrike: {
+          enabled: true,
+          durationMs: 900,
+        },
+      },
       lightningStrikes: [
         { x: 26, y: 40.8, scoreX: 26, scoreY: 35.3, text: "320", delay: 110, hold: 230, noJitter: true, textScale: .7 },
         { x: 20, y: 61, scoreX: 20, scoreY: 55.5, text: "680", delay: 60, hold: 260, noJitter: true, textScale: .7 },
@@ -297,12 +314,13 @@ window.GotchaPerformanceConfig = {
         strikes: [9],
         metadata: "assets/thor/effects/lightning/lightning-orange_spritesheet.json",
         image: "assets/thor/effects/lightning/lightning-orange.png",
-        durationMs: 820,
+        durationMs: 900,
         fadeOutMs: 260,
         opacity: .96,
         loop: true,
-        width: 210,
-        height: 320,
+        width: 280,
+        height: 430,
+        anchorY: -104,
       },
       hiddenSlots: [
         "images/Light_02",

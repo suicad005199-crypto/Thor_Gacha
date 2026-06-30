@@ -2066,6 +2066,12 @@ function createThorStrikeSpriteFx(point, runId) {
       setPoint(canvas, point);
       canvas.style.setProperty("--strike-sprite-width", `${Number(spriteConfig.width || 210)}px`);
       canvas.style.setProperty("--strike-sprite-height", `${Number(spriteConfig.height || 320)}px`);
+      if (Number.isFinite(Number(spriteConfig.anchorY))) {
+        canvas.style.setProperty("--strike-sprite-anchor-y", `${Number(spriteConfig.anchorY)}%`);
+      }
+      if (Number.isFinite(Number(spriteConfig.scale))) {
+        canvas.style.setProperty("--strike-sprite-scale", Number(spriteConfig.scale));
+      }
       if (Number.isFinite(Number(spriteConfig.zIndex))) {
         canvas.style.zIndex = String(Number(spriteConfig.zIndex));
       }
@@ -3981,10 +3987,13 @@ function lightningToneForPoint(point) {
     }
 
 function triggerThorFinalShock() {
+      const finalFx = activeCharacter.cinematicFx?.finalStrike || {};
+      const durationMs = Math.max(360, Number(finalFx.durationMs || 720));
+      stage.style.setProperty("--thor-final-shock-ms", `${durationMs}ms`);
       stage.classList.remove("stage--lightning-shake", "stage--thor-final-shock");
       void stage.offsetWidth;
       stage.classList.add("stage--thor-final-shock");
-      window.setTimeout(() => stage.classList.remove("stage--thor-final-shock"), 720);
+      window.setTimeout(() => stage.classList.remove("stage--thor-final-shock"), durationMs);
     }
 
 function triggerLightningStrike(point, runId) {
@@ -5028,6 +5037,61 @@ function resolveRunTotals() {
       return plannedStrikes;
     }
 
+    function isModernThorPerformance() {
+      return activeCharacterKey === "god10101" && !activeCharacter.legacyLightning;
+    }
+
+    async function playThorPreludeFx(runId) {
+      if (!isModernThorPerformance()) return;
+      const settings = activeCharacter.cinematicFx?.prelude || {};
+      if (settings.enabled === false) return;
+
+      const durationMs = Math.max(0, Number(settings.durationMs || 0));
+      if (!durationMs) return;
+
+      const flashDelayMs = clampNumber(
+        Number(settings.flashDelayMs ?? durationMs * .48),
+        0,
+        durationMs
+      );
+      stage.style.setProperty("--thor-prelude-duration", `${durationMs}ms`);
+      stage.style.setProperty("--thor-prelude-flash-delay", `${flashDelayMs}ms`);
+      stage.classList.remove("stage--thor-prelude", "stage--thor-prelude-flash");
+      void stage.offsetWidth;
+      stage.classList.add("stage--thor-prelude");
+
+      const flashTimer = window.setTimeout(() => {
+        if (runId === sequenceId) {
+          stage.classList.add("stage--thor-prelude-flash");
+        }
+      }, flashDelayMs);
+
+      await sleep(durationMs);
+      window.clearTimeout(flashTimer);
+      stage.classList.remove("stage--thor-prelude", "stage--thor-prelude-flash");
+    }
+
+    async function playThorEnergyChargeFx(runId, settings = {}) {
+      if (!isModernThorPerformance() || settings.enabled === false) return;
+
+      const durationMs = Math.max(120, Number(settings.durationMs || 520));
+      stage.style.setProperty("--thor-energy-duration", `${durationMs}ms`);
+      stage.classList.remove("stage--thor-energy-charge");
+      boss.classList.remove("is-thor-energy-charge");
+      void stage.offsetWidth;
+      stage.classList.add("stage--thor-energy-charge");
+      boss.classList.add("is-thor-energy-charge");
+      if (settings.playSound !== false) {
+        playChargeSound(Number(settings.soundRate || 1.2));
+      }
+
+      await sleep(durationMs);
+      stopChargeSound();
+      stage.classList.remove("stage--thor-energy-charge");
+      boss.classList.remove("is-thor-energy-charge");
+      if (runId !== sequenceId) return;
+    }
+
     async function playLightningShow(runId, plannedStrikes = null, options = {}) {
       clearOrbShow();
       startLightningRenderer();
@@ -5046,6 +5110,9 @@ function resolveRunTotals() {
       let triggeredStrikeCount = 0;
       let hasPlayedLightningSpineIntro = false;
       let hasPlayedOpeningPayback = false;
+      let hasPlayedThorEnergyCharge = false;
+      const thorEnergyChargeFx = activeCharacter.cinematicFx?.energyCharge || {};
+      const thorEnergyChargeTrigger = Math.max(1, Number(thorEnergyChargeFx.triggerStrike || 7));
 
       for (const strike of strikes) {
         if (strike.pause) {
@@ -5059,11 +5126,24 @@ function resolveRunTotals() {
 
         const strikeDelay = strike.delay ?? 90;
         const nextStrikeNumber = triggeredStrikeCount + 1;
+        const configuredStrikeNumber = Number(strike.configuredStrikeNumber || nextStrikeNumber);
         const introStrikeNumber = activeCharacter.lightningSpineIntroStrike;
         const shouldPlaySpineIntro = !hasPlayedLightningSpineIntro
           && activeCharacter.spineCharacter
           && Number.isFinite(introStrikeNumber)
           && nextStrikeNumber === introStrikeNumber;
+
+        if (
+          !hasPlayedThorEnergyCharge
+          && isModernThorPerformance()
+          && thorEnergyChargeFx.enabled !== false
+          && Number.isFinite(configuredStrikeNumber)
+          && configuredStrikeNumber >= thorEnergyChargeTrigger
+        ) {
+          hasPlayedThorEnergyCharge = true;
+          await playThorEnergyChargeFx(runId, thorEnergyChargeFx);
+          if (runId !== sequenceId) return;
+        }
 
         if (shouldPlaySpineIntro) {
           const plannedLead = activeBossSpine?.runtime?.introStrikeLeadMs || 0;
@@ -5928,6 +6008,8 @@ function resolveRunTotals() {
       stage.classList.add("stage--scene", "stage--flash");
 
       await sleep(180);
+      if (runId !== sequenceId) return;
+      await playThorPreludeFx(runId);
       if (runId !== sequenceId) return;
       await playBossEntrance(runId, { thorSpawnVersion: useThorSpawnVersion });
       if (runId !== sequenceId) return;
