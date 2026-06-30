@@ -280,8 +280,8 @@ window.GotchaPerformanceConfig = {
       scoreLoopViewPadding: .7,
       scoreLoopHiddenSlots: [],
       scoreSpriteFx: {
-        enabled: true,
-        strikes: [1],
+        enabled: false,
+        strikes: [],
         metadata: "assets/thor/effects/lightning/blue_lightning999_spritesheet.json",
         image: "assets/thor/effects/lightning/blue_lightning999_spritesheet.png",
         durationMs: 5000,
