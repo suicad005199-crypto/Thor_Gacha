@@ -1917,6 +1917,22 @@ function getThorStrikeSpriteFxConfig(strikeNumber) {
       return getThorSpriteFxConfig(spriteConfig, strikeNumber);
     }
 
+function preloadThorStrikeSpriteFxForPlan(strikes) {
+      if (!Array.isArray(strikes) || !isModernThorPerformance()) return;
+
+      const preloadKeys = new Set();
+      strikes.forEach((strike) => {
+        const strikeNumber = Number(strike?.configuredStrikeNumber);
+        const spriteConfig = getThorStrikeSpriteFxConfig(strikeNumber);
+        if (!spriteConfig) return;
+
+        const cacheKey = `${spriteConfig.metadata}|${spriteConfig.image || ""}`;
+        if (preloadKeys.has(cacheKey)) return;
+        preloadKeys.add(cacheKey);
+        void loadThorScoreSpriteFxData(spriteConfig);
+      });
+    }
+
 function createThorScoreSpriteFxRuntime(canvas, spriteData, spriteConfig = {}) {
       const ctx = canvas.getContext("2d");
       if (!ctx || !spriteData?.image || !spriteData.frames?.length) return null;
@@ -5107,6 +5123,7 @@ function resolveRunTotals() {
         void loadThorIntroFxData();
       }
       const strikes = plannedStrikes || createLightningStrikePlan();
+      preloadThorStrikeSpriteFxForPlan(strikes);
       let triggeredStrikeCount = 0;
       let hasPlayedLightningSpineIntro = false;
       let hasPlayedOpeningPayback = false;
